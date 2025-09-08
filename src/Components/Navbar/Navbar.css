@@ -1,0 +1,140 @@
+/* ===== Navbar Base ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 97%;
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: none;
+  transition: all 0.4s ease;
+  z-index: 100;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Navbar when scrolled */
+.navbar.scrolled {
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 0.6rem 2rem;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #7c3aed;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #7c3aed;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #7c3aed;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.login-btn {
+  background: transparent;
+  border: 2px solid #7c3aed;
+  color: #7c3aed;
+}
+
+.login-btn:hover {
+  background: #7c3aed;
+  color: #fff;
+}
+
+.register-btn {
+  background: linear-gradient(90deg, #7c3aed, #9333ea);
+  color: #fff;
+  border: none;
+}
+
+.register-btn:hover {
+  background: linear-gradient(90deg, #9333ea, #7c3aed);
+  transform: translateY(-2px);
+}
+
+/* Responsive Navbar */
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .nav-links a {
+    padding: 0.4rem 0;
+  }
+
+  .auth-buttons {
+    margin-top: 0.5rem;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+}

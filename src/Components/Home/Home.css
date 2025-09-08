@@ -1,0 +1,492 @@
+/* ===== Global ===== */
+body, .home {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f9f9fb;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, #7c3aed, #9333ea);
+  color: #fff;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: linear-gradient(90deg, #9333ea, #7c3aed);
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  border: 2px solid #7c3aed;
+  background: transparent;
+  color: #7c3aed;
+}
+
+.btn.secondary:hover {
+  background: #7c3aed;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #f3f0ff 0%, #fff 100%);
+  gap: 2rem;
+}
+
+.hero-text h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #7c3aed, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  font-size: 0.9rem;
+  color: #555;
+  max-width: 22rem;
+}
+
+.hero-image img {
+  border-radius: 0.6rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  max-width: 100%;
+}
+
+/* ===== Services / Feature Cards ===== */
+/* ===== Supports Section Modern ===== */
+.supports {
+  position: relative;
+  padding: 5rem 1.5rem;
+  background: #f7f5ff;
+  overflow: hidden;
+}
+
+/* Floating circles in background */
+.supports::before,
+.supports::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(124, 58, 237, 0.1);
+  z-index: 0;
+}
+
+.supports::before {
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  left: -100px;
+}
+
+.supports::after {
+  width: 200px;
+  height: 200px;
+  bottom: -50px;
+  right: -50px;
+}
+
+/* Grid layout */
+.supports .feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 1; /* above background circles */
+}
+
+/* Floating card effect */
+.supports .feature-card {
+  background-color: #fff;
+  border-radius: 1.2rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.08);
+  transition: transform 0.5s ease, box-shadow 0.5s ease, rotate 0.5s ease;
+  transform: translateY(0) rotate(0deg);
+}
+
+.supports .feature-card:hover {
+  transform: translateY(-15px) ;
+  box-shadow: 0 25px 40px rgba(124, 58, 237, 0.2);
+}
+
+/* Icon glow */
+.supports .feature-card img,
+.supports .feature-card svg {
+  height: 3rem;
+  width: 3rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #9333ea, #7c3aed);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.supports .feature-card:hover img,
+.supports .feature-card:hover svg {
+  transform: scale(1.2);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.6);
+}
+
+/* Text */
+.supports .feature-card h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.supports .feature-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .supports .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .supports .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* General Section */
+.section {
+  padding: 4rem 2rem;
+  background: #f9fafb; /* light gray background */
+}
+
+.section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111827; /* dark text */
+}
+
+.section p {
+  color: #6b7280; /* gray-500 */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.section ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+  color: #374151; /* gray-700 */
+}
+
+.section ul li svg {
+  color: #8b5cf6; /* purple-500 */
+  flex-shrink: 0;
+  height: 20px;
+  width: 20px;
+}
+
+/* Info Card (Right Side) */
+.info-card {
+  background: #fff;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.info-card svg {
+  height: 48px;
+  width: 48px;
+  margin: 0 auto 1rem;
+  color: #a78bfa; /* purple-400 */
+}
+
+.info-card h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.info-card p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+
+
+/* ===== Testimonials ===== */
+.testimonials {
+  position: relative;
+  background: #f7f5ff;
+  padding: 6rem 1rem;
+  overflow: hidden;
+}
+
+.testimonials .testimonial-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.testimonials .testimonial-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 45px rgba(124, 58, 237, 0.2);
+}
+
+.testimonials .avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  padding: 0.2rem;
+  background: linear-gradient(135deg, #9333ea, #7c3aed);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonials .testimonial-card:hover .avatar {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+}
+
+.testimonials h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.testimonials p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.testimonials .flex span {
+  font-size: 1.1rem;
+  margin-right: 2px;
+}
+
+@media (max-width: 1024px) {
+  .testimonials .slick-slide {
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonials .testimonial-card {
+    padding: 1.5rem;
+  }
+}
+
+
+/* ===== CTA Section ===== */
+.ready {
+  padding: 4rem 2rem;
+  background: linear-gradient(90deg, #f3f0ff, #fff);
+  text-align: center;
+}
+
+.ready h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+
+.ready p {
+  color: #555;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+
+
+/* ===== Responsive ===== */
+@media (min-width: 768px) {
+  .hero {
+    flex-direction: row;
+    text-align: left;
+  }
+  .hero-text {
+    width: 50%;
+  }
+  .hero-image {
+    width: 50%;
+  }
+
+  .why-choose {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .supports .feature-card,
+  .why-choose ul li {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== Updated Typography Styles ===== */
+
+/* Hero Section */
+.hero-text h2 {
+  font-size: 3.5rem; /* Main title, big and bold */
+  line-height: 1.2;
+}
+
+.hero-text p {
+  font-size: 1.25rem; /* Subtitle / description */
+  line-height: 1.6;
+}
+
+/* Section Titles */
+h2 {
+  font-size: 2.5rem; /* Section headings like "How HealHub Supports You" */
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.5rem; /* Card titles or subsection titles */
+  font-weight: 700;
+}
+
+/* Paragraph Text */
+p {
+  font-size: 1.1rem; /* Main body text */
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Buttons */
+.btn {
+  font-size: 1rem; /* Base button text */
+  padding: 0.6rem 1.2rem;
+}
+
+.btn.primary,
+.btn.secondary {
+  font-size: 1.1rem; /* Slightly bigger for call-to-action buttons */
+}
+
+/* Testimonials */
+.testimonials p {
+  font-size: 1rem; /* Testimonial text */
+  line-height: 1.5;
+}
+
+.testimonials cite {
+  font-size: 0.95rem; /* User name */
+  color: #888;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .hero-text h2 { font-size: 3rem; }
+  .hero-text p { font-size: 1.15rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.4rem; }
+}
+
+@media (max-width: 640px) {
+  .hero-text h2 { font-size: 2.5rem; }
+  .hero-text p { font-size: 1rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.25rem; }
+}
+
+/* Footer Wrapper */
+.footer {
+  background: #f9fafb; /* same bg as Why Choose */
+  padding: 4rem 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Grid Layout */
+.footer .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+/* Headings */
+.footer h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827; /* same as Why Choose heading */
+  margin-bottom: 0.75rem;
+}
+
+.footer h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #111827;
+}
+
+/* Paragraphs & Links */
+.footer p,
+.footer li,
+.footer a {
+  color: #6b7280; /* same gray as Why Choose text */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer a:hover {
+  color: #7c3aed; /* purple hover like icons */
+}
+
+/* Crisis Section Special Text */
+.footer strong {
+  color: #111827;
+  font-weight: 700;
+}
+
+/* Bottom Note */
+.footer .bottom-note {
+  border-top: 1px solid #e5e7eb;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+}

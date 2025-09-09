@@ -250,8 +250,15 @@ body, .home {
 .testimonials {
   position: relative;
   background: #f7f5ff;
-
+  padding: 4rem 1rem 0;
+  margin-bottom: 0;
   overflow: hidden;
+}
+
+/* Reset heading and paragraph spacing inside testimonials */
+.testimonials h2,
+.testimonials p {
+  margin-bottom: 1rem;
 }
 
 .testimonials .testimonial-card {
@@ -442,9 +449,9 @@ p {
 
 /* Footer Wrapper */
 .footer {
-  background: #f9f9fb; 
-  margin-top: -1rem;
-  border-top: 1px solid #e5e7eb;
+  background: #f9f9fb;
+  padding: 2rem 2rem;
+  margin-top: 0;
 }
 
 /* Grid Layout */

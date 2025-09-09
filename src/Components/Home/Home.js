@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 import { Brain, Users, Calendar, BookOpen, Shield, MessageCircle, Heart } from "lucide-react";
@@ -15,7 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 export default function HealHub() {
 
   const services = [
-    { icon: Brain, title: "Mental Health Assessment", description: "Take our scientifically-backed assessment to understand your current mental health status.", link: "/quiz" },
+    { icon: Brain, title: "Mental Health Assessment", description: "Take our scientifically-backed assessment to understand your current mental health status.", link: "/assessment" },
     { icon: Users, title: "Find Your Therapist", description: "Connect with licensed mental health professionals who specialize in your needs.", link: "/therapists" },
     { icon: Calendar, title: "Easy Scheduling", description: "Book therapy sessions at your convenience with our simple booking system.", link: "/therapists" },
     { icon: BookOpen, title: "Resources & Support", description: "Access our library of articles, guides, and tools for mental health support.", link: "/blog" }
@@ -62,6 +63,8 @@ export default function HealHub() {
     }
   ];
 
+  const navigate = useNavigate();
+
   const settings = {
     infinite: true,
     speed: 600,
@@ -85,7 +88,7 @@ export default function HealHub() {
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-purple-900 bg-clip-text text-transparent">Your Journey to Mental Wellness Starts Here</h1>
           <p className="text-gray-700 mb-8 max-w-lg">Connect with licensed therapists, take evidence-based assessments, and access resources to support your mental health journey in a safe, confidential environment.</p>
           <div className="flex justify-center md:justify-start gap-4">
-            <button className="btn primary">Take Free Assessment</button>
+            <button className="btn primary" onClick={() => navigate('/assessment')}>Take Free Assessment</button>
             <button className="btn secondary">Find a Therapist</button>
           </div>
         </div>
@@ -226,7 +229,7 @@ export default function HealHub() {
     <div>
       <h3 className="text-lg font-semibold mb-3 text-gray-800">Services</h3>
       <ul className="space-y-2">
-        <li><a href="#assessment" className="hover:text-purple-600">Assessment</a></li>
+        <li><a href="/assessment" className="hover:text-purple-600">Assessment</a></li>
         <li><a href="#therapist" className="hover:text-purple-600">Find Therapist</a></li>
         <li><a href="#resources" className="hover:text-purple-600">Resources</a></li>
       </ul>

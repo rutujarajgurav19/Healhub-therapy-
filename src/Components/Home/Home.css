@@ -249,7 +249,8 @@ body, .home {
 .testimonials {
   position: relative;
   background: #f7f5ff;
-  padding: 6rem 1rem;
+  padding: 0 !important;
+  margin: 0 !important;
   overflow: hidden;
 }
 
@@ -259,7 +260,7 @@ body, .home {
   padding: 2rem;
   text-align: center;
   box-shadow: 0 12px 30px rgba(124, 58, 237, 0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.9s ease, box-shadow 0.9s ease;
 }
 
 .testimonials .testimonial-card:hover {
@@ -267,12 +268,14 @@ body, .home {
   box-shadow: 0 25px 45px rgba(124, 58, 237, 0.2);
 }
 
+/* Avatar centered */
 .testimonials .avatar {
+  display: block;
+  margin: 0 auto 1rem auto;
   width: 70px;
   height: 70px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1rem;
   padding: 0.2rem;
   background: linear-gradient(135deg, #9333ea, #7c3aed);
   box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
@@ -288,6 +291,7 @@ body, .home {
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.2rem;
+  color: #1f1f1f;
 }
 
 .testimonials p {
@@ -301,6 +305,15 @@ body, .home {
   margin-right: 2px;
 }
 
+/* slick spacing for multiple slides */
+.testimonials .slick-slide {
+  padding: 0 1rem;
+}
+
+.testimonials .slick-list {
+  margin: 0 -1rem;
+}
+
 @media (max-width: 1024px) {
   .testimonials .slick-slide {
     padding: 0 0.5rem;
@@ -312,7 +325,6 @@ body, .home {
     padding: 1.5rem;
   }
 }
-
 
 /* ===== CTA Section ===== */
 .ready {
@@ -430,8 +442,9 @@ p {
 
 /* Footer Wrapper */
 .footer {
-  background: #f9fafb; /* same bg as Why Choose */
-  padding: 4rem 2rem;
+  background: #f9fafb; 
+  padding: 0 2rem 2rem;
+  margin-top: 0;
   border-top: 1px solid #e5e7eb;
 }
 

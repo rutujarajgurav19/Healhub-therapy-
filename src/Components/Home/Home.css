@@ -30,6 +30,7 @@ body, .home {
 
 .btn.secondary {
   border: 2px solid #7c3aed;
+  margin-left: 20px;
   background: transparent;
   color: #7c3aed;
 }
@@ -249,8 +250,7 @@ body, .home {
 .testimonials {
   position: relative;
   background: #f7f5ff;
-  padding: 0 !important;
-  margin: 0 !important;
+
   overflow: hidden;
 }
 
@@ -442,9 +442,8 @@ p {
 
 /* Footer Wrapper */
 .footer {
-  background: #f9fafb; 
-  padding: 0 2rem 2rem;
-  margin-top: 0;
+  background: #f9f9fb; 
+  margin-top: -1rem;
   border-top: 1px solid #e5e7eb;
 }
 

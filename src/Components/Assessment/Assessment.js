@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Assessment.css";
+import Alert from "../Alert/Alert";
 
 const questions = [
   "I feel overwhelmed by daily responsibilities",
@@ -30,7 +31,8 @@ export default function Assessment() {
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  const [message, setMessage] = useState("");
+  const [alertType, setAlertType] = useState("error");
 
   const handleAnswer = (val) => {
     const updated = [...answers];
@@ -40,8 +42,8 @@ export default function Assessment() {
 
   const next = () => {
     if (answers[current] === undefined) {
-      setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 2000);
+      setAlertType("error");
+      setMessage("Please select an option before proceeding.");
       return;
     }
 
@@ -65,11 +67,7 @@ export default function Assessment() {
 
   return (
     <div className="assessment">
-      {showAlert && (
-        <div className="custom-alert">
-          Please select an option before proceeding.
-        </div>
-      )}
+      <Alert type={alertType} message={message} onClose={() => setMessage("")} />
       {!showResult ? (
         <div className="card">
           <h2>Mental Health Assessment</h2>
@@ -127,7 +125,7 @@ export default function Assessment() {
             Your responses indicate: <span className="font-bold">{level}</span>
           </p>
           <p>
-            Score: {totalScore} out of {questions.length * 3}
+            Score: {totalScore} out of {questions.length * 2}
           </p>
           {level === "High Stress" && (
             <p className="text-red-600 mb-4">

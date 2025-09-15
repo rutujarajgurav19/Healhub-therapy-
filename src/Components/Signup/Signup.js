@@ -1,12 +1,179 @@
-import React from 'react';
+import React, { useState } from "react";
+import "./Signup.css";
 
-const Signup = () => {
+function Signup() {
+  const [step, setStep] = useState(1); // 1=basic info, 2=OTP verify
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    otp: "",
+    terms: false
+  });
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+  };
+
+  // Step 1: Send OTP
+  const sendOTP = async () => {
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+      return setMessage("Fill all required fields");
+    }
+    if (formData.password !== formData.confirmPassword) {
+      return setMessage("Passwords do not match");
+    }
+    if (!formData.terms) {
+      return setMessage("Agree to Terms & Privacy Policy");
+    }
+
+    try {
+      const res = await fetch("http://localhost/Healhub/send_otp.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setMessage("OTP sent to your email");
+        setStep(2);
+      } else {
+        setMessage(data.message);
+      }
+    } catch (error) {
+      setMessage("Error sending OTP: " + error.message);
+    }
+  };
+
+  // Step 2: Verify OTP and Create Account
+  const verifyOTP = async () => {
+    if (!formData.otp) {
+      return setMessage("Enter OTP");
+    }
+
+    try {
+      const res = await fetch("http://localhost/Healhub/verify_otp.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email,
+          otp: formData.otp,
+          name: `${formData.firstName} ${formData.lastName}`,
+          password: formData.password
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setMessage("Account created successfully!");
+        setStep(1);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+          otp: "",
+          terms: false
+        });
+      } else {
+        setMessage(data.message);
+      }
+    } catch (error) {
+      setMessage("OTP verification failed: " + error.message);
+    }
+  };
+
   return (
-    <div>
-      <h1>Signup</h1>
-      {/* Add signup form here */}
-    </div>
+    <>
+      <div className="signup-card">
+        {step === 1 && (
+          <>
+            <h2>Create Your Account</h2>
+            <p>Start your mental health journey today</p>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+            />
+            <label>
+              <input
+                type="checkbox"
+                name="terms"
+                checked={formData.terms}
+                onChange={handleChange}
+              />
+              I agree to the Terms of Service and Privacy Policy
+            </label>
+            <button className="btn-primary" onClick={sendOTP}>
+              Create Account & Send OTP
+            </button>
+          </>
+        )}
+
+        {step === 2 && (
+          <>
+            <h2>Verify Your Email</h2>
+            <p>Enter the OTP sent to {formData.email}</p>
+            <input
+              type="text"
+              name="otp"
+              placeholder="Enter OTP"
+              value={formData.otp}
+              onChange={handleChange}
+            />
+            <button className="btn-primary" onClick={verifyOTP}>
+              Verify & Complete Signup
+            </button>
+            <button className="btn-secondary" onClick={() => setStep(1)}>
+              Edit Info
+            </button>
+          </>
+        )}
+
+        <p>
+          Already have an account? <span className="link" onClick={() => window.location="/login"}>Sign in</span>
+        </p>
+         <small>
+        Your information is encrypted and protected. We never share your personal or mental health data with third parties.
+      </small>
+      </div>
+
+    </>
   );
-};
+}
 
 export default Signup;

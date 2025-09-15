@@ -1,0 +1,26 @@
+.alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  min-width: 250px;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.alert.success { background-color: #6a5af9; }
+.alert.error { background-color: #f44336; }
+
+.alert button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}

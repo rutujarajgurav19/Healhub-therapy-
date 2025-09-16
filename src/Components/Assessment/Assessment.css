@@ -8,13 +8,13 @@ body {
 
 .assessment {
   max-width: 720px;
-  margin: 50px auto;
+  margin: 120px auto;
   padding: 20px;
 }
 
 .card {
   background: #fff;
-  padding: 32px;
+  padding: 52px;
   border-radius: 20px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.6s ease;

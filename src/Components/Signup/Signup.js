@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Signup.css";
+import Alert from "../Alert/Alert";
 
 function Signup() {
   const [step, setStep] = useState(1); // 1=basic info, 2=OTP verify
@@ -13,6 +14,7 @@ function Signup() {
     terms: false
   });
   const [message, setMessage] = useState("");
+  const [alertType, setAlertType] = useState("success");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -22,12 +24,15 @@ function Signup() {
   // Step 1: Send OTP
   const sendOTP = async () => {
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+      setAlertType("error");
       return setMessage("Fill all required fields");
     }
     if (formData.password !== formData.confirmPassword) {
+      setAlertType("error");
       return setMessage("Passwords do not match");
     }
     if (!formData.terms) {
+      setAlertType("error");
       return setMessage("Agree to Terms & Privacy Policy");
     }
 
@@ -39,12 +44,15 @@ function Signup() {
       });
       const data = await res.json();
       if (data.success) {
+        setAlertType("success");
         setMessage("OTP sent to your email");
         setStep(2);
       } else {
+        setAlertType("error");
         setMessage(data.message);
       }
     } catch (error) {
+      setAlertType("error");
       setMessage("Error sending OTP: " + error.message);
     }
   };
@@ -52,6 +60,7 @@ function Signup() {
   // Step 2: Verify OTP and Create Account
   const verifyOTP = async () => {
     if (!formData.otp) {
+      setAlertType("error");
       return setMessage("Enter OTP");
     }
 
@@ -68,6 +77,7 @@ function Signup() {
       });
       const data = await res.json();
       if (data.success) {
+        setAlertType("success");
         setMessage("Account created successfully!");
         setStep(1);
         setFormData({
@@ -80,9 +90,11 @@ function Signup() {
           terms: false
         });
       } else {
+        setAlertType("error");
         setMessage(data.message);
       }
     } catch (error) {
+      setAlertType("error");
       setMessage("OTP verification failed: " + error.message);
     }
   };
@@ -171,6 +183,7 @@ function Signup() {
         Your information is encrypted and protected. We never share your personal or mental health data with third parties.
       </small>
       </div>
+      <Alert type={alertType} message={message} onClose={() => setMessage("")} />
 
     </>
   );

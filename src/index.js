@@ -13,9 +13,9 @@ root.render(
 
 // Handle AbortError for media play/pause interruptions
 window.addEventListener('unhandledrejection', event => {
-  if (event.reason && event.reason.name === 'AbortError') {
+  if (event.reason && event.reason.name === 'AbortError' && event.reason.message && event.reason.message.includes('play() request was interrupted by a call to pause()')) {
     event.preventDefault();
-    console.log('Media play aborted, ignoring error');
+    // Suppress the error without logging
   }
 });
 

@@ -239,7 +239,7 @@ export default function HealHub() {
     <div>
       <h3 className="text-lg font-semibold mb-3 text-gray-800">Support</h3>
       <ul className="space-y-2">
-        <li><a href="#contact" className="hover:text-purple-600">Contact Us</a></li>
+        <li><a href="/contact" className="hover:text-purple-600">Contact Us</a></li>
         <li><a href="#crisis" className="hover:text-purple-600">Crisis Support</a></li>
         <li><a href="#faq" className="hover:text-purple-600">FAQ</a></li>
       </ul>

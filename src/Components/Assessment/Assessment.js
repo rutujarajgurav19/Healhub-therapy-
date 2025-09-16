@@ -2,22 +2,19 @@ import React, { useState } from "react";
 import "./Assessment.css";
 import Alert from "../Alert/Alert";
 
+// Questions with therapy category tags
 const questions = [
-  "I feel overwhelmed by daily responsibilities",
-  "I have trouble sleeping or staying asleep",
-  "I feel anxious in social situations",
-  "I find it hard to concentrate on tasks",
-  "I feel little interest or pleasure in activities",
-  "I experience sudden mood changes",
-  "I feel isolated or lonely",
-  "I have low energy most of the day",
-  "I often feel tense or restless",
-  "I feel pessimistic about the future",
-  "I find it difficult to make decisions",
-  "I experience physical symptoms like headaches or stomach issues",
-  "I have lost interest in hobbies I once enjoyed",
-  "I feel worthless or have low self-esteem",
-  "I have thoughts of harming myself",
+  { text: "I feel overwhelmed by daily responsibilities", category: "DepressionAnxietyStress" },
+  { text: "I have trouble sleeping or staying asleep", category: "DepressionAnxietyStress" },
+  { text: "I feel anxious in social situations", category: "DepressionAnxietyStress" },
+  { text: "I find it hard to concentrate on tasks", category: "DepressionAnxietyStress" },
+  { text: "I struggle to maintain healthy relationships", category: "RelationshipCounselling" },
+  { text: "I feel stressed balancing parenting and personal life", category: "Parenting" },
+  { text: "I have experienced a traumatic event that affects me", category: "Trauma" },
+  { text: "I have thoughts of harming myself", category: "Trauma" },
+  { text: "I face issues with sleep, diet, or work-life balance", category: "LifestyleIssues" },
+  { text: "I often feel tense or restless", category: "DepressionAnxietyStress" },
+  { text: "I feel isolated or lonely", category: "RelationshipCounselling" },
 ];
 
 const options = [
@@ -33,6 +30,7 @@ export default function Assessment() {
   const [showResult, setShowResult] = useState(false);
   const [message, setMessage] = useState("");
   const [alertType, setAlertType] = useState("error");
+  const [recommendedTherapy, setRecommendedTherapy] = useState("");
 
   const handleAnswer = (val) => {
     const updated = [...answers];
@@ -50,7 +48,45 @@ export default function Assessment() {
     if (current < questions.length - 1) {
       setCurrent(current + 1);
     } else {
-      setShowResult(true);
+      calculateResult();
+    }
+  };
+
+  const calculateResult = () => {
+    // Calculate category scores
+    const categoryScores = answers.reduce((acc, val, index) => {
+      const category = questions[index].category;
+      acc[category] = (acc[category] || 0) + (val || 0);
+      return acc;
+    }, {});
+
+    // Pick the category with the highest score
+    const bestCategory = Object.keys(categoryScores).reduce((a, b) =>
+      categoryScores[a] > categoryScores[b] ? a : b
+    );
+
+    setRecommendedTherapy(bestCategory);
+
+    // Save data to backend
+    saveResult(categoryScores, bestCategory);
+
+    setShowResult(true);
+  };
+
+  const saveResult = async (categoryScores, bestCategory) => {
+    try {
+await fetch("http://localhost/healhub/api/assessment.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          answers,
+          categoryScores,
+          recommendedTherapy: bestCategory,
+          userId: "123", // Replace with actual logged-in user ID
+        }),
+      });
+    } catch (err) {
+      console.error("Error saving result:", err);
     }
   };
 
@@ -58,12 +94,8 @@ export default function Assessment() {
     setAnswers([]);
     setCurrent(0);
     setShowResult(false);
+    setRecommendedTherapy("");
   };
-
-  const totalScore = answers.reduce((a, b) => a + (b || 0), 0);
-  let level = "Low Stress";
-  if (totalScore >= 16 && totalScore < 30) level = "Moderate Stress";
-  if (totalScore >= 30) level = "High Stress";
 
   return (
     <div className="assessment">
@@ -71,9 +103,7 @@ export default function Assessment() {
       {!showResult ? (
         <div className="card">
           <h2>Mental Health Assessment</h2>
-          <p className="subtitle">
-            Answer honestly to get personalized recommendations
-          </p>
+          <p className="subtitle">Answer honestly to get personalized recommendations</p>
           <div className="progress">
             <div
               className="bar"
@@ -83,7 +113,7 @@ export default function Assessment() {
           <p className="question-counter">
             Question {current + 1} of {questions.length}
           </p>
-          <p className="question">{questions[current]}</p>
+          <p className="question">{questions[current].text}</p>
           <div className="choices">
             {options.map((opt, i) => {
               const isSelected = answers[current] === opt.value;
@@ -103,49 +133,51 @@ export default function Assessment() {
           </div>
           <div className={`button-container ${current === 0 ? "single" : ""}`}>
             {current > 0 && (
-              <button
-                onClick={() => setCurrent(current - 1)}
-                className="btn secondary"
-              >
+              <button onClick={() => setCurrent(current - 1)} className="btn secondary">
                 Previous
               </button>
             )}
-            <button
-              onClick={next}
-              className="btn primary"
-            >
+            <button onClick={next} className="btn primary">
               {current === questions.length - 1 ? "Finish" : "Next"}
             </button>
           </div>
         </div>
       ) : (
-        <div className="card">
+        <div className="card result-card">
           <h2>Assessment Complete</h2>
           <p className="subtitle">
-            Your responses indicate: <span className="font-bold">{level}</span>
+            Your responses indicate: <span className="font-bold">{recommendedTherapy}</span>
           </p>
+
           <p>
-            Score: {totalScore} out of {questions.length * 2}
+            Questions answered: {answers.filter(a => a !== undefined).length} out of {questions.length}
           </p>
-          {level === "High Stress" && (
-            <p className="text-red-600 mb-4">
-              We strongly recommend speaking with a mental health professional.
-            </p>
-          )}
-          <div className="space-y-2">
-            <button className="btn primary w-full">
+
+          {/* Therapy Recommendation */}
+          <div className="therapy-recommendation">
+            <h3>Recommended Therapy</h3>
+            <p>{recommendedTherapy.replace(/([A-Z])/g, " $1")}</p>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="actions">
+            <button
+              className="btn primary w-full"
+              onClick={() => {
+                const isAuthenticated = false; // Replace with actual auth check
+                if (!isAuthenticated) {
+                  window.location.href = "/signup";
+                } else {
+                  window.location.href = "/therapist";
+                }
+              }}
+            >
               Book a therapy session now
             </button>
-            <button className="btn secondary w-full">
-              Crisis support resources
-            </button>
-            <button className="btn secondary w-full">
-              Immediate coping strategies
+            <button onClick={restart} className="btn secondary w-full">
+              Retake Assessment
             </button>
           </div>
-          <button onClick={restart} className="btn secondary mt-6">
-            Retake Assessment
-          </button>
         </div>
       )}
     </div>

@@ -1,0 +1,210 @@
+/* General Page Styles */
+.trauma-page {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f5fb;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  margin-top: 130px;
+}
+
+/* Header Section */
+.trauma-header {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #7b5de8, #b085f5);
+  color: #fff;
+}
+
+.trauma-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.trauma-header p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 25px;
+}
+
+.trauma-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background-color: #fff;
+  color: #7b5de8;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #e6e0f8;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Intro Section */
+.trauma-intro {
+  padding: 50px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.trauma-intro h2 {
+  font-size: 2rem;
+  color: #7b5de8;
+  margin-bottom: 20px;
+}
+
+.trauma-intro p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Disorders Section */
+.trauma-disorders {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.disorder-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.disorder-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(123, 93, 232, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.disorder-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(123, 93, 232, 0.15);
+}
+
+.disorder-card h3 {
+  color: #7b5de8;
+  margin-bottom: 12px;
+}
+
+.disorder-card p {
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.view-details {
+  color: #7b5de8;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.view-details:hover {
+  text-decoration: underline;
+}
+
+/* Therapy Approach Section */
+.trauma-approach {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.approach-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.approach-card {
+  flex: 0 0 30%;
+  min-width: 250px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(123, 93, 232, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.approach-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(123, 93, 232, 0.15);
+}
+
+.approach-card h3 {
+  color: #7b5de8;
+  margin-bottom: 12px;
+}
+
+.approach-card p {
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .approach-card {
+    flex: 0 0 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .approach-card {
+    flex: 0 0 100%;
+  }
+
+  .trauma-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .trauma-intro p {
+    font-size: 1rem;
+  }
+}
+
+/* Trauma Therapy Image */
+.trauma-image {
+  max-width: 100%;
+  border-radius: 12px;
+
+  margin-bottom: 30px;
+  display: block;
+  height: 300px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+

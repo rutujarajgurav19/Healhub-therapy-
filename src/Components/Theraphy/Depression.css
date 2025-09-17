@@ -86,10 +86,10 @@ p {
 
 /* Therapy Images */
 .therapy-img {
-  width: 100%;
-  max-width: 550px;
+  width: 40%;
+  max-width: 10px;
   border-radius: 12px;
-  margin-top: 20px;
+  margin-top: -0.1px;
 }
 
 /* Impact Section */

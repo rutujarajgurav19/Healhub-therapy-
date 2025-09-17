@@ -7,6 +7,8 @@ import Assessment from "./Components/Assessment/Assessment";
 import DepressionTherapy from "./Components/Theraphy/Depression";
 import TraumaTherapy from "./Components/Theraphy/Truma";
 import Contact from "./Components/Contact/Contact";
+import Therapyinfo from "./Components/Therapistinfo/Therapistinfo";
+import Booking from "./Components/Booking/Booking";
 
 function App() {
   return (
@@ -19,8 +21,11 @@ function App() {
         <Route path="/assessment" element={<Assessment />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/contact" element={<Contact/>}/>
+        <Route path="/therapist" element={<Therapyinfo />} />
+        <Route path="/therapistinfo" element={<Therapyinfo />} />
         <Route path="/therapy/depression" element={<DepressionTherapy />} />
         <Route path="/therapy/trauma" element={<TraumaTherapy />} />
+        <Route path="/booking" element={<Booking />} />
       </Routes>
     </Router>
   );

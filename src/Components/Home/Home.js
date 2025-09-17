@@ -27,41 +27,74 @@ export default function HealHub() {
   const testimonials = [
     {
       name: "Sarah M.",
-      rating: 5,
+      rating: 5.0,
       text: "HealHub helped me find the perfect therapist. The assessment was insightful and the booking process was seamless.",
       avatar: user1
     },
     {
       name: "David K.",
-      rating: 5,
+      rating: 4.5,
       text: "The mental health resources and assessment tool gave me clarity on my anxiety. Highly recommend!",
       avatar: user2
     },
     {
       name: "Emma L.",
-      rating: 5,
+      rating: 5.0,
       text: "Professional, caring, and convenient. HealHub made getting mental health support so much easier.",
       avatar: user3
     },
     {
       name: "Michael S.",
-      rating: 4,
+      rating: 4.0,
       text: "The platform is easy to use, and the therapists are highly professional. Very satisfied!",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg"
     },
     {
       name: "Olivia T.",
-      rating: 5,
+      rating: 3.5,
       text: "I love the resources section. The mental health tips and articles are very helpful.",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg"
     },
     {
       name: "Liam R.",
-      rating: 4,
+      rating: 4.1,
       text: "Booking therapy sessions is very simple and convenient. Great service!",
       avatar: "https://randomuser.me/api/portraits/men/58.jpg"
     }
   ];
+
+  const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const decimalPart = rating - fullStars;
+    const hasHalfStar = decimalPart >= 0.25 && decimalPart < 0.75;
+    const hasQuarterStar = decimalPart >= 0.1 && decimalPart < 0.25;
+    const hasThreeQuarterStar = decimalPart >= 0.75;
+    let emptyStars = 5 - fullStars;
+
+    if (hasHalfStar) {
+      emptyStars -= 1;
+    } else if (hasQuarterStar || hasThreeQuarterStar) {
+      emptyStars -= 1;
+    }
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<span key={i} className="star full">★</span>);
+    }
+
+    if (hasThreeQuarterStar) {
+      stars.push(<span key="three-quarter" className="star three-quarter">★</span>);
+    } else if (hasHalfStar) {
+      stars.push(<span key="half" className="star half">★</span>);
+    } else if (hasQuarterStar) {
+      stars.push(<span key="quarter" className="star quarter">★</span>);
+    }
+
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<span key={`empty-${i}`} className="star empty">★</span>);
+    }
+    return stars;
+  };
 
   const navigate = useNavigate();
 
@@ -193,15 +226,8 @@ export default function HealHub() {
             <h3 className="text-lg font-semibold mb-1">{testimonial.headline}</h3>
             <p className="text-sm text-purple-600 mb-2">{testimonial.role}</p>
             <div className="flex justify-center mb-4">
-  {[...Array(5)].map((_, i) => (
-    <span
-      key={i}
-      className={`text-xl ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'}`}
-    >
-      ★
-    </span>
-  ))}
-</div>
+              {renderStars(testimonial.rating)}
+            </div>
 
             <p className="text-gray-700 italic mb-4">"{testimonial.text}"</p>
             <p className="font-semibold text-gray-900">— {testimonial.name}</p>
@@ -230,7 +256,7 @@ export default function HealHub() {
       <h3 className="text-lg font-semibold mb-3 text-gray-800">Services</h3>
       <ul className="space-y-2">
         <li><a href="/assessment" className="hover:text-purple-600">Assessment</a></li>
-        <li><a href="#therapist" className="hover:text-purple-600">Find Therapist</a></li>
+        <li><a href="/therapistinfo" className="hover:text-purple-600">Find Therapist</a></li>
         <li><a href="#resources" className="hover:text-purple-600">Resources</a></li>
       </ul>
     </div>

@@ -26,7 +26,7 @@ export default function Navbar() {
       <nav className="nav-links">
         <Link to="/">Home</Link>
         <Link to="/assessment">Assessment</Link>
-        <Link to="/therapist">Find Therapist</Link>
+        <Link to="/therapistinfo">Find Therapist</Link>
 
         {/* Dropdown for Therapy Types */}
         <div

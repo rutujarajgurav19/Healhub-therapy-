@@ -1,0 +1,251 @@
+.booking-container { 
+  max-width: 1200px;
+   margin: 0 auto;
+    padding: 150px; 
+    font-family: Arial, sans-serif; 
+    color: #333; 
+  } 
+  
+  .booking-content { 
+    display: flex; 
+    gap: 20px; 
+    align-items: flex-start; 
+  } 
+  .therapist-info, .booking-form {
+     flex: 1; 
+    } 
+    
+  .booking-header { 
+    text-align: center; 
+    margin-bottom: 20px; 
+  } 
+  
+  .booking-header h2 { 
+    font-size: 28px; 
+    margin-bottom: 5px; 
+    color: #4b2e83; /* Purple highlight */ 
+  }
+  
+  .booking-header p { 
+    font-size: 16px; 
+    color: #666; 
+} 
+    
+    /* Therapist info */ 
+    .therapist-info { 
+      background: #f9f6ff; 
+      border: 1px solid #d5c8f7; 
+      border-radius: 10px; 
+      padding: 15px; 
+} 
+    .therapist-info h3 { 
+      font-size: 22px; 
+      margin: 0; 
+      color: #4b2e83; 
+} 
+    
+    .therapist-info p {
+       margin: 5px 0 0;
+        font-size: 15px;
+         color: #555; 
+} 
+
+/* Form sections */ 
+.form-section { 
+  margin-bottom: 20px; 
+} 
+
+.form-section label { 
+  display: block; 
+  font-weight: bold; 
+  margin-bottom: 8px; 
+  color: #444; 
+} 
+
+.form-section select, 
+.form-section input, 
+.form-section textarea {
+   width: 100%;
+   padding: 10px; 
+   border: 1px solid #ccc;
+    border-radius: 8px; 
+    font-size: 14px;
+  } 
+  textarea { 
+    resize: vertical; 
+    min-height: 80px; 
+  }
+  
+/* Submit button */ 
+.booking-button {
+   display: block;
+    width: 100%; 
+    padding: 12px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    color: #fff; 
+    background: #4b2e83; 
+    gap: 5px; 
+    margin: 3px 0;
+   }
+   
+   .star { 
+    font-size: 18px; 
+    color: #ffd700; /* Yellow */ 
+  
+  } 
+  
+  .star.empty { 
+    color: #ccc; 
+  } 
+  
+.star.half { 
+  background: linear-gradient(to right, #ffd700 50%, #ccc 50%); 
+  -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent; 
+   background-clip: text;
+   } 
+   
+.star.quarter { 
+  background: linear-gradient(to right, #ffd700 25%, #ccc 25%); 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;
+} 
+
+.star.three-quarter { 
+  background: linear-gradient(to right, #ffd700 75%, #ccc 75%);
+   -webkit-background-clip: text; 
+   -webkit-text-fill-color: transparent;
+    background-clip: text;
+} 
+
+/* Reviews Section */ 
+.reviews-section {
+   margin-bottom: 25px; 
+  } 
+  
+  .reviews-section h3 { 
+    font-size: 24px; 
+    color: #4b2e83; 
+    margin-bottom: 15px; 
+    text-align: center;
+}
+.review {
+       background: #f9f9f9; 
+       border: 1px solid #e0e0e0; 
+       border-radius: 8px; 
+       padding: 15px; 
+       margin-bottom: 15px; 
+} 
+
+.review-stars { 
+  display: flex; 
+  align-items: center; 
+  gap: 5px; 
+  margin-bottom: 10px; 
+} 
+
+.review-stars span { 
+  font-weight: bold;
+   color: #4b2e83; 
+  }
+  
+  .review-text { 
+    font-style: italic; 
+    color: #555; 
+    margin-bottom: 5px; 
+  } 
+  
+  .review-author { 
+    font-weight: bold; 
+    color: #333; 
+    margin: 0;
+  } 
+  
+  /* Booking Form Container */ 
+  .booking-form { 
+    background: #ffffff;
+     padding: 25px;
+      border-radius: 14px;
+       box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+ } 
+ 
+ /* Labels */ 
+ .booking-form label { 
+  display: block; 
+  font-size: 15px;
+   font-weight: 600; 
+   margin-bottom: 6px; 
+   color: #4b2e83; /* brand purple */
+  } 
+  
+  /* Inputs and Selects */ 
+  .booking-form input, 
+  .booking-form select, 
+  .booking-form textarea { 
+    width: 100%;
+     padding: 12px; 
+     border: 1.5px solid #d1c4e9; 
+     border-radius: 10px; 
+     font-size: 14px; 
+     color: #333; 
+     background: #fdfcff; 
+     transition: border 0.3s ease, box-shadow 0.3s ease; 
+    } 
+    
+    /* Date input specific styling */ 
+.booking-form input[type="date"] { 
+  padding: 10px 12px;
+   font-size: 14px; 
+   height: auto; 
+   margin-bottom: 10px; 
+  }
+  
+  .booking-form input:focus, 
+  .booking-form select:focus, 
+  .booking-form textarea:focus { 
+    border-color: #4b2e83; 
+    box-shadow: 0 0 6px rgba(75,46,131,0.3);
+     outline: none; }
+     
+/* Textarea */
+.booking-form textarea {
+   resize: vertical; 
+   min-height: 100px;
+   } 
+   
+ /* Section spacing */ 
+   .form-section { 
+    margin-bottom: 20px; 
+  }
+
+/* Submit button */
+.booking-form 
+.submit-btn { 
+  width: 100%; 
+  padding: 14px; 
+  font-size: 16px;
+   font-weight: bold; 
+   color: #fff; 
+   background: linear-gradient(135deg, #4b2e83, #6a4fcf); 
+   border: none; 
+   border-radius: 10px; 
+   cursor: pointer; 
+   transition: transform 0.2s ease, background 0.3s ease;
+   } 
+   .booking-form 
+   .submit-btn:hover {
+     transform: translateY(-2px); 
+     background: linear-gradient(135deg, #3a2366, #5a3bbb); 
+    }
+
+/* Responsive Design */ 
+@media (max-width: 768px) {
+   .booking-content {
+     flex-direction: column; 
+    } 
+  
+  .booking-container { 
+    max-width: 100%; 
+    padding: 10px; } }

@@ -255,6 +255,37 @@ body, .home {
   overflow: hidden;
 }
 
+/* Star Styles */
+.star {
+  font-size: 18px;
+  color: #ffd700; /* Yellow */
+}
+
+.star.empty {
+  color: #ccc;
+}
+
+.star.half {
+  background: linear-gradient(to right, #ffd700 50%, #ccc 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.star.quarter {
+  background: linear-gradient(to right, #ffd700 25%, #ccc 25%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.star.three-quarter {
+  background: linear-gradient(to right, #ffd700 75%, #ccc 75%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* Reset heading and paragraph spacing inside testimonials */
 .testimonials h2,
 .testimonials p {

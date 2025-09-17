@@ -1,0 +1,416 @@
+.therapists {
+  padding: 10rem;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
+.therapists h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #4c1d95;
+}
+
+.therapists .subtitle {
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.filters input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.therapist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.therapist-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.therapist-card:hover {
+  transform: translateY(-4px);
+}
+
+.therapist-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* Individual therapist image adjustments */
+.therapist-image.therapist-1 {
+  object-fit: fill;
+  height: 250px;
+}
+.therapist-image.therapist-2 {
+  object-fit: fill;
+  height: 250px;
+}
+
+
+.therapist-image.therapist-3 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.therapist-image.therapist-4 {
+  object-fit: contain;
+  height: 220px;
+  padding: 10px;
+  border-radius: 8px;
+}
+.therapist-image.therapist-5 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.therapist-image.therapist-6 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.therapist-image.therapist-7 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+.therapist-image.therapist-8 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.therapist-image.therapist-9 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.therapist-image.therapist-10 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.therapist-image.therapist-11 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.therapist-image.therapist-12 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+
+.therapist-image.therapist-13 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+
+.therapist-image.therapist-14 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+
+.therapist-image.therapist-15 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+
+.therapist-image.therapist-16 {
+  object-fit: fill;
+  height: 250px;
+  border-radius: 8px;
+}
+
+/* Add more individual image styles here as needed */
+
+.therapist-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #111827;
+}
+
+.therapist-card .title {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.therapist-card .availability {
+  color: #16a34a;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.therapist-card .rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 3px 0;
+  color: #f59e0b;
+}
+
+.star {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.star.full {
+  color: #f59e0b;
+}
+
+.star.half {
+  background: linear-gradient(to right, #f59e0b 50%, #ccc 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.therapist-card .specialties {
+  font-weight: 500;
+  color: #4c1d95;
+}
+
+.therapist-card .bio {
+  font-size: 0.9rem;
+  color: #374151;
+  margin: 0.5rem 0;
+}
+
+.therapist-card .education {
+  font-size: 0.9rem;
+  color: #4c1d95;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.therapist-card .experience {
+  font-size: 0.9rem;
+  color: #059669;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.therapist-card .specializations {
+  font-size: 0.9rem;
+  color: #374151;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.therapist-card .approach {
+  font-size: 0.9rem;
+  color: #374151;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.therapist-card .location,
+.therapist-card .price {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, #7c3aed, #9333ea);
+  color: #fff;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: linear-gradient(90deg, #9333ea, #7c3aed);
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 2px solid #7c3aed;
+  color: #7c3aed;
+}
+
+.btn.secondary:hover {
+  background: #7c3aed;
+  color: #fff;
+}
+
+.filter-box {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.custom-dropdown {
+  position: relative;
+  width: 200px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.dropdown-selected {
+  padding: 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #374151;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.dropdown-arrow {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-option {
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.dropdown-option:hover,
+.dropdown-option.selected {
+  background-color: #7c3aed;
+  color: #fff;
+}
+
+.filter-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #4c1d95;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.count {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Message Modal */
+.message-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.message-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.message-content h3 {
+  margin-bottom: 1rem;
+  color: #4c1d95;
+}
+
+.message-content textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

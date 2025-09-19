@@ -1,9 +1,21 @@
 // src/pages/Therapy/Trauma.js
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "../../UserContext";
 import "./Truma.css";
 
 export default function Trauma() {
+  const { user } = useUser();
+  const navigate = useNavigate();
+
+  const handleBookSession = () => {
+    if (user) {
+      navigate('/booking');
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
     <div className="trauma-page">
       {/* Header */}
@@ -14,7 +26,6 @@ export default function Trauma() {
         </p>
         <div className="trauma-buttons">
           <Link to="/therapist" className="btn-primary">Find My Therapist</Link>
-          <Link to="/signup" className="btn-secondary">Book Session</Link>
         </div>
       </header>
 

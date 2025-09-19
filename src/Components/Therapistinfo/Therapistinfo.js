@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Therapistsinfo.css";
 import PriyaImg from "../../assets/therapists/Priya.jpg";
 import emilyImg from "../../assets/therapists/emily.jpg";
@@ -23,7 +23,7 @@ const therapists = [
     id: 1,
     name: "Dr. Priya Sharma",
     title: "Clinical Psychologist",
-    education: "Ph.D. in Clinical Psychology, Stanford University",
+    education: "Ph.D.in Clinical Psychology,Stanford University",
     experience: "12+ years experience",
     specializations: ["Anxiety Disorders", "Depression", "Trauma Therapy"],
     approach: "Cognitive Behavioral Therapy (CBT) and EMDR",
@@ -37,10 +37,10 @@ const therapists = [
     id: 2,
     name: "Dr. Michael Chen",
     title: "Relationship Counsellor",
-    education: "M.A. in Counseling Psychology, UCLA",
+    education: "  M.A. in Counseling Psychology,  UCLA",
     experience: "8+ years experience",
-    specializations: ["Relationship Counselling", "Stress Management", "Depression", "Anxiety"],
-    approach: "Solution-Focused Brief Therapy and Mindfulness-Based Cognitive Therapy",
+    specializations: ["Relationship Counselling",  "Stress Management",  "Depression",  "Anxiety"],
+    approach: "Solution-Focused  Brief  Therapy  and  Mindfulness-Based  Cognitive  Therapy",
     availability: "Available this week",
     rating: "4.8 (89 reviews)",
     location: "Los Angeles, CA",
@@ -93,7 +93,7 @@ const therapists = [
     id: 6,
     name: "Dr. Olivia Taylor",
     title: "Behavioral Therapist",
-    education: "Ph.D. in Behavioral Psychology, University of Washington",
+    education: "Ph.D.in Behavioral Psychology,University of Washington",
     experience: "11+ years experience",
     specializations: ["OCD", "Phobias", "Behavioral Issues"],
     approach: "Exposure and Response Prevention (ERP) and Acceptance and Commitment Therapy",
@@ -246,29 +246,12 @@ const therapists = [
 ];
 
 export default function Therapists() {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [specialty, setSpecialty] = useState("All Specialties");
   const [location, setLocation] = useState("");
   const [selectedTherapist, setSelectedTherapist] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const renderStars = (rating) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<span key={i} className="star full">★</span>);
-    }
-    if (hasHalfStar) {
-      stars.push(<span key="half" className="star half">★</span>);
-    }
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(<span key={`empty-${i}`} className="star empty">★</span>);
-    }
-    return stars;
-  };
 
   // collect all specialties
   const allSpecialties = [
@@ -314,6 +297,25 @@ export default function Therapists() {
     // Here you can handle sending the message, e.g., call an API or show a success message
     alert(`Message sent to ${selectedTherapist.name}!`);
     setSelectedTherapist(null);
+  };
+
+  const renderStars = (rating) => {
+    const stars = [];
+    const ratingNum = parseFloat(rating.split(' ')[0]);
+    const fullStars = Math.floor(ratingNum);
+    const hasHalfStar = ratingNum % 1 >= 0.5;
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<span key={i} className="star full">★</span>);
+    }
+    if (hasHalfStar) {
+      stars.push(<span key="half" className="star half">★</span>);
+    }
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<span key={`empty-${i}`} className="star">★</span>);
+    }
+    return stars;
   };
 
   return (
@@ -391,13 +393,30 @@ export default function Therapists() {
               <strong>Approach:</strong> {t.approach}
             </div>
             <p className="availability">{t.availability}</p>
+            <div className="rating">
+              {renderStars(t.rating)} {t.rating}
+            </div>
             <p className="location">{t.location}</p>
             <p className="price">{t.price}</p>
             <div className="actions">
               <button className="btn secondary" onClick={() => setSelectedTherapist(t)}>Message</button>
-            <Link to="/booking" state={{ therapist: t }}>
-              <button className="btn primary">Book</button>
-            </Link>
+              <button className="btn primary" onClick={() => {
+                const therapistData = {
+                  therapist_id: t.id,
+                  name: t.name,
+                  title: t.title,
+                  education: t.education,
+                  experience: t.experience,
+                  specialties: t.specializations.join(", "),
+                  approach: t.approach,
+                  availability: t.availability,
+                  rating: t.rating,
+                  location: t.location,
+                  price: t.price,
+                  photo_url: t.image
+                };
+                navigate('/booking', { state: { therapist: therapistData } });
+              }}>Book</button>
             </div>
           </div>
         ))}

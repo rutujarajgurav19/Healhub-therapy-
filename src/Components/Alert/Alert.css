@@ -13,8 +13,9 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.alert.success { background-color: #6a5af9; }
-.alert.error { background-color: #f44336; }
+.alert.success { background-color: #6a0dad; }
+.alert.error { background-color: #d90429; }
+.alert.info { background-color: #8a7fd3; }
 
 .alert button {
   background: transparent;

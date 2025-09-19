@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import healhublogo from "../../assets/healhublogo.png";
+import defaultAvatar from "../../assets/avatar.png";
+import { useUser } from "../../UserContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const { user, logout } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +19,11 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
@@ -50,10 +60,34 @@ export default function Navbar() {
         <Link to="/contact">Contact</Link>
       </nav>
 
-      {/* Right Auth Buttons */}
+      {/* Right Auth Buttons or Profile Menu */}
       <div className="auth-buttons">
-        <Link to="/login" className="btn login-btn">Login</Link>
-        <Link to="/signup" className="btn register-btn">Signup</Link>
+        {user ? (
+          <div className="profile-menu">
+            <img
+              src={user.photo || defaultAvatar}
+              alt="Profile"
+              className="profile-avatar"
+              onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+            />
+            {profileDropdownOpen && (
+              <div className="profile-dropdown">
+                <p className="dropdown-name">{user.name}</p>
+                <p className="dropdown-email">{user.email}</p>
+                <Link to="/profile/current">Current Bookings</Link>
+                <Link to="/profile/past">Past Bookings</Link>
+                <Link to="/profile/therapists">My Therapists</Link>
+                <Link to="/forgot-password">Forgot Password</Link>
+                <button onClick={handleLogout}>Logout</button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <>
+            <Link to="/login" className="btn login-btn">Login</Link>
+            <Link to="/signup" className="btn register-btn">Signup</Link>
+          </>
+        )}
       </div>
     </header>
   );

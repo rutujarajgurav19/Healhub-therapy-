@@ -58,10 +58,12 @@
 .therapist-image.therapist-1 {
   object-fit: fill;
   height: 250px;
+  border-radius: 8px;
 }
 .therapist-image.therapist-2 {
   object-fit: fill;
-  height: 250px;
+  height: 270px;
+  border-radius: 8px;
 }
 
 
@@ -73,13 +75,13 @@
 
 .therapist-image.therapist-4 {
   object-fit: contain;
-  height: 220px;
+  height: 260px;
   padding: 10px;
   border-radius: 8px;
 }
 .therapist-image.therapist-5 {
   object-fit: fill;
-  height: 250px;
+  height: 290px;
   border-radius: 8px;
 }
 
@@ -91,12 +93,12 @@
 
 .therapist-image.therapist-7 {
   object-fit: fill;
-  height: 250px;
+  height: 290px;
   border-radius: 8px;
 }
 .therapist-image.therapist-8 {
   object-fit: fill;
-  height: 250px;
+  height: 270px;
   border-radius: 8px;
 }
 
@@ -254,6 +256,7 @@
 .btn.primary {
   background: linear-gradient(90deg, #7c3aed, #9333ea);
   color: #fff;
+  margin-left: 1rem;
   border: none;
 }
 

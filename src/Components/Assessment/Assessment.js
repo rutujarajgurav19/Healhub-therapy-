@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Assessment.css";
 import Alert from "../Alert/Alert";
+import { useUser } from "../../UserContext";
 
 // Questions with therapy category tags
 const questions = [
@@ -161,19 +162,19 @@ await fetch("http://localhost/healhub/api/assessment.php", {
 
           {/* Action Buttons */}
           <div className="actions">
-            <button
-              className="btn primary w-full"
-              onClick={() => {
-                const isAuthenticated = false; // Replace with actual auth check
-                if (!isAuthenticated) {
-                  window.location.href = "/signup";
-                } else {
-                  window.location.href = "/therapist";
-                }
-              }}
-            >
-              Book a therapy session now
-            </button>
+          <button
+            className="btn primary w-full"
+            onClick={() => {
+              const isAuthenticated = !!localStorage.getItem("user");
+              if (!isAuthenticated) {
+                window.location.href = "/signup";
+              } else {
+                window.location.href = "/therapist";
+              }
+            }}
+          >
+            Book a therapy session now
+          </button>
             <button onClick={restart} className="btn secondary w-full">
               Retake Assessment
             </button>

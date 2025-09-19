@@ -1,0 +1,62 @@
+.therapists-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.therapist-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.therapist-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.therapist-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border: 2px solid #6a5acd;
+}
+
+.therapist-card h4 {
+  margin: 0 0 6px;
+  color: #6a5acd;
+  font-size: 16px;
+}
+
+.therapist-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.book-again-btn {
+  background-color: #6a5acd;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.book-again-btn:hover {
+  background-color: #5a4fc8;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #333;
+}

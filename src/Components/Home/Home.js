@@ -122,7 +122,7 @@ export default function HealHub() {
           <p className="text-gray-700 mb-8 max-w-lg">Connect with licensed therapists, take evidence-based assessments, and access resources to support your mental health journey in a safe, confidential environment.</p>
           <div className="flex justify-center md:justify-start gap-4">
             <button className="btn primary" onClick={() => navigate('/assessment')}>Take Free Assessment</button>
-            <button className="btn secondary">Find a Therapist</button>
+            <button className="btn secondary"onClick={() => navigate('/therapistinfo')}>Find a Therapist</button>
           </div>
         </div>
         <div className="hero-image md:w-1/2 mt-10 md:mt-0">

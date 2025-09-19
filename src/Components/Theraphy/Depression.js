@@ -1,11 +1,23 @@
 // src/pages/Therapy/StressAnxietyDepression.js
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "../../UserContext";
 import therapyImg1 from "../../assets/therapy1.jpg"; // replace with your images
 
 import "./Depression.css";
 
 export default function StressAnxietyDepression() {
+  const { user } = useUser();
+  const navigate = useNavigate();
+
+  const handleBookSession = () => {
+    if (user) {
+      navigate('/booking');
+    } else {
+      navigate('/login');
+    }
+  };
+
   const approaches = [
     { title: "Cognitive Behavioural Therapy (CBT)", description: "CBT focuses on understanding and restructuring anxious thought patterns and developing healthier coping strategies." },
     { title: "Mindfulness Training", description: "Helps center your mind, improve focus, and increase resilience by bringing awareness to the present moment." },
@@ -24,7 +36,6 @@ export default function StressAnxietyDepression() {
         </p>
         <div className="therapy-buttons">
           <Link to="/therapist" className="btn-primary">Find My Therapist</Link>
-          <Link to="/signup" className="btn-secondary">Book Session</Link>
         </div>
       </header>
 

@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "./Login.css";
 import Alert from "../Alert/Alert"; // import the reusable Alert
+import { useUser } from "../../UserContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const { login } = useUser();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
   const [alertType, setAlertType] = useState("success");
@@ -28,8 +32,16 @@ function Login() {
 
       if (data.success) {
         setAlertType("success");
-        setMessage("Login successful! 🎉");
-        // TODO: Redirect or save session
+        setMessage("Login successful!");
+        // Save user info to context
+        if (data.user) {
+          login(data.user);
+        } else {
+          // Set dummy user if not provided
+          login({ name: "User", email: formData.email, photo: "/default-avatar.png" });
+        }
+        // Redirect to home page
+        navigate("/home");
       } else {
         setAlertType("error");
         setMessage(data.message);

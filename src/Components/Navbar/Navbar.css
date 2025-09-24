@@ -16,6 +16,12 @@
   font-family: 'Inter', sans-serif;
 }
 
+/* Navbar hidden state */
+.navbar.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
 /* Navbar when scrolled */
 .navbar.scrolled {
   background: rgba(255, 252, 252, 0.986);
@@ -124,7 +130,8 @@
 /* Auth Buttons */
 .auth-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
+  margin-left: 2rem;
 }
 
 .btn {
@@ -167,19 +174,19 @@
 
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     padding: 0.8rem 1rem;
   }
 
   .nav-links {
-    flex-direction: column;
-    width: 100%;
-    margin-top: 0.5rem;
+    flex-direction: row;
+    width: 97%;
+    margin-top: 0;
   }
 
   .nav-links a {
-    padding: 0.4rem 0;
+    padding: 0.4rem 0.5rem;
   }
 
   .dropdown-menu {
@@ -192,7 +199,7 @@
   }
 
   .auth-buttons {
-    margin-top: 0.5rem;
+    margin-top: 0;
     width: 100%;
     justify-content: flex-start;
     gap: 0.5rem;

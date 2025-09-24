@@ -1,8 +1,8 @@
-/* ---------------- Login Card ---------------- */
+
 .login-card {
   width: 400px;
-  margin: 140px auto 50px;
-  padding: 30px;
+  margin: 120px auto 50px;
+  padding: 70px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   background: #fff;
@@ -71,7 +71,7 @@ input[type="password"] {
 
 .btn-google { 
   background-color: #dd4b39; 
-  color: #fff; 
+  color: #ffffff; 
 }
 
 .link { 

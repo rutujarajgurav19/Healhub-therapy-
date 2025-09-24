@@ -1,0 +1,19 @@
+.find-therapist-intro {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.find-therapist-intro h2 {
+  color: #6a5acd;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.find-therapist-intro p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.5;
+}

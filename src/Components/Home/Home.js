@@ -257,7 +257,7 @@ export default function HealHub() {
       <ul className="space-y-2">
         <li><a href="/assessment" className="hover:text-purple-600">Assessment</a></li>
         <li><a href="/therapistinfo" className="hover:text-purple-600">Find Therapist</a></li>
-        <li><a href="#resources" className="hover:text-purple-600">Resources</a></li>
+        <li><a href="/resources" className="hover:text-purple-600">Resources</a></li>
       </ul>
     </div>
 

@@ -101,8 +101,6 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-container">
-      <h2>My Profile</h2>
-
       {alert.message && (
         <Alert
           type={alert.type}
@@ -110,33 +108,6 @@ const ProfilePage = () => {
           onClose={() => setAlert({ type: '', message: '' })}
         />
       )}
-
-      <div className="tabs">
-        <button
-          className={activeTab === 'current' ? 'active' : ''}
-          onClick={() => navigate('/profile/current')}
-        >
-          Current Bookings
-        </button>
-        <button
-          className={activeTab === 'past' ? 'active' : ''}
-          onClick={() => navigate('/profile/past')}
-        >
-          Past Bookings
-        </button>
-        <button
-          className={activeTab === 'therapists' ? 'active' : ''}
-          onClick={() => navigate('/profile/therapists')}
-        >
-          Therapists Booked
-        </button>
-        <button
-          className={activeTab === 'forgot' ? 'active' : ''}
-          onClick={() => navigate('/forgot-password')}
-        >
-          Forgot Password
-        </button>
-      </div>
 
       {activeTab === 'current' && (
         <CurrentBookings currentBookings={currentBookings} onCancel={cancelBooking} />

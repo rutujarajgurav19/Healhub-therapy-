@@ -1,0 +1,204 @@
+/* General Page Styles */
+.addiction-page {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f5fb;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  margin-top: 130px;
+}
+
+/* Header Section */
+.addiction-header {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #7b5de8, #b085f5);
+  color: #fff;
+}
+
+.addiction-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.addiction-header p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 25px;
+}
+
+.addiction-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background-color: #fff;
+  color: #7b5de8;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #e6e0f8;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Intro Section */
+.addiction-intro {
+  padding: 50px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.addiction-intro h2 {
+  font-size: 2rem;
+  color: #7b5de8;
+  margin-bottom: 20px;
+}
+
+.addiction-intro p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.addiction-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(123, 93, 232, 0.1);
+  margin-top: 20px;
+}
+
+/* Disorders Section */
+.addiction-challenges {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.challenge-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.challenge-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(123, 93, 232, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.challenge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(123, 93, 232, 0.15);
+}
+
+.challenge-card h3 {
+  color: #7b5de8;
+  margin-bottom: 12px;
+}
+
+.challenge-card p {
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.view-details {
+  color: #7b5de8;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.view-details:hover {
+  text-decoration: underline;
+}
+
+/* Support Resources Section */
+.addiction-resources {
+  background-color: #f9f9f9;
+  padding: 50px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(123, 93, 232, 0.1);
+}
+
+.addiction-resources h2 {
+  font-size: 2rem;
+  color: #7b5de8;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.addiction-resources ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.addiction-resources ul li {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.addiction-resources ul li strong {
+  color: #7b5de8;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .approach-card {
+    flex: 0 0 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .approach-card {
+    flex: 0 0 100%;
+  }
+
+  .addiction-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .addiction-intro p {
+    font-size: 1rem;
+  }
+
+  .addiction-resources h2 {
+    font-size: 1.8rem;
+  }
+
+  .addiction-resources ul li {
+    font-size: 0.95rem;
+  }
+}

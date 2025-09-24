@@ -71,7 +71,7 @@ function Login() {
           value={formData.password}
           onChange={handleChange}
         />
-        <p className="forgot">Forgot password?</p>
+
         <button className="btn-primary" onClick={handleLogin}>
           Sign In
         </button>

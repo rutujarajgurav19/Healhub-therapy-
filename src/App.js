@@ -7,6 +7,10 @@ import Signup from "./Components/Signup/Signup";
 import Assessment from "./Components/Assessment/Assessment";
 import DepressionTherapy from "./Components/Theraphy/Depression";
 import TraumaTherapy from "./Components/Theraphy/Truma";
+import Parenting from "./Components/Theraphy/Parenting";
+import RelationshipCounseling from "./Components/Theraphy/RelationshipCounseling";
+import Addication from "./Components/Theraphy/Addication";
+import Resources from "./Components/Resources/Resources";
 import Contact from "./Components/Contact/Contact";
 import Therapyinfo from "./Components/Therapistinfo/Therapistinfo";
 import Booking from "./Components/Booking/Booking";
@@ -28,6 +32,9 @@ function App() {
           <Route path="/therapistinfo" element={<Therapyinfo />} />
           <Route path="/therapy/depression" element={<DepressionTherapy />} />
           <Route path="/therapy/trauma" element={<TraumaTherapy />} />
+          <Route path="/therapy/parenting" element={<Parenting />} />
+          <Route path="/therapy/relationship" element={<RelationshipCounseling />} />
+          <Route path="/therapy/addiction" element={<Addication />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/profile" element={<ProfilePage />} />
           {/* Removed redundant profile sub-routes */}
@@ -35,6 +42,7 @@ function App() {
           <Route path="/profile/past" element={<ProfilePage />} />
           <Route path="/profile/therapists" element={<ProfilePage />} />
           <Route path="/forgot-password" element={<ProfilePage />} />
+          <Route path="/resources" element={<Resources />} />
         </Routes>
       </Router>
     </UserProvider>

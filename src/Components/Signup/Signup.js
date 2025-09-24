@@ -15,6 +15,7 @@ function Signup() {
   });
   const [message, setMessage] = useState("");
   const [alertType, setAlertType] = useState("success");
+  const [otpSent, setOtpSent] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -36,6 +37,8 @@ function Signup() {
       return setMessage("Agree to Terms & Privacy Policy");
     }
 
+    setStep(2);
+    setOtpSent(false);
     try {
       const res = await fetch("http://localhost/Healhub/send_otp.php", {
         method: "POST",
@@ -44,14 +47,14 @@ function Signup() {
       });
       const data = await res.json();
       if (data.success) {
-        setAlertType("success");
-        setMessage("OTP sent to your email");
-        setStep(2);
+        setOtpSent(true);
       } else {
+        setOtpSent(false);
         setAlertType("error");
         setMessage(data.message);
       }
     } catch (error) {
+      setOtpSent(false);
       setAlertType("error");
       setMessage("Error sending OTP: " + error.message);
     }
@@ -153,10 +156,20 @@ function Signup() {
             <button className="btn-primary" onClick={sendOTP}>
               Create Account & Send OTP
             </button>
+            <p>
+              Already have an account? <span className="link" onClick={() => window.location="/login"}>Sign in</span>
+            </p>
           </>
         )}
 
-        {step === 2 && (
+        {step === 2 && !otpSent && (
+          <>
+            <h2>Verify Your Email</h2>
+            <p>Sending OTP to {formData.email}...</p>
+          </>
+        )}
+
+        {step === 2 && otpSent && (
           <>
             <h2>Verify Your Email</h2>
             <p>Enter the OTP sent to {formData.email}</p>
@@ -173,12 +186,12 @@ function Signup() {
             <button className="btn-secondary" onClick={() => setStep(1)}>
               Edit Info
             </button>
+            <p>
+              Already have an account? <span className="link" onClick={() => window.location="/login"}>Sign in</span>
+            </p>
           </>
         )}
 
-        <p>
-          Already have an account? <span className="link" onClick={() => window.location="/login"}>Sign in</span>
-        </p>
          <small>
         Your information is encrypted and protected. We never share your personal or mental health data with third parties.
       </small>

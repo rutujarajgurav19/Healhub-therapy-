@@ -11,7 +11,7 @@
 /* Header Section */
 .therapy-header {
   text-align: center;
-  padding: 130px 20px;
+  padding: 80px 20px;
   background: linear-gradient(135deg, #7b5de8, #b085f5);
   color: #fff;
 }
@@ -86,8 +86,8 @@ p {
 
 /* Therapy Images */
 .therapy-img {
-  width: 40%;
-  max-width: 10px;
+  width: 50%;
+  max-width: 20px;
   border-radius: 12px;
   margin-top: -0.1px;
 }

@@ -50,14 +50,14 @@ export default function Trauma() {
             <p>
               Dealing with trauma alone can be devastating. PTSD may involve intrusive thoughts, nightmares, or flashbacks. Trauma-informed therapists provide strategies to process these experiences safely.
             </p>
-            <Link to="/ptsd" className="view-details">View Details {'>'}</Link>
+            
           </div>
           <div className="disorder-card">
             <h3>Complex PTSD</h3>
             <p>
               Complex PTSD arises from prolonged trauma, affecting security, emotions, relationships, and self-perception. Counseling can provide coping strategies and emotional regulation skills.
             </p>
-            <Link to="/complex-ptsd" className="view-details">View Details {'>'}</Link>
+            
           </div>
         </div>
       </section>

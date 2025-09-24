@@ -14,7 +14,11 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -51,7 +55,7 @@ export default function Navbar() {
               <Link to="/therapy/depression">Depression, Anxiety & Stress</Link>
               <Link to="/therapy/parenting">Parenting</Link>
               <Link to="/therapy/trauma">Trauma</Link>
-              <Link to="/therapy/lifestyle">Lifestyle Issues</Link>
+              <Link to="/therapy/addiction">Lifestyle Issues</Link>
             </div>
           )}
         </div>

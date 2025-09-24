@@ -1,0 +1,160 @@
+/* Container */
+.articles-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10rem;
+}
+
+/* Title */
+.page-title {
+  text-align: center;
+  color: #5a189a;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Subtitle */
+.page-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Grid Layout */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card */
+.article-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Article Title */
+.article-title {
+  font-size: 1.2rem;
+  color: #3c096c;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Content */
+.article-content {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+
+/* Toggle Button */
+.toggle-btn {
+  margin-top: 0.8rem;
+  background: none;
+  border: none;
+  color: #5a189a;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  color: #3c096c;
+  text-decoration: underline;
+}
+
+/* Featured Article */
+.featured-article {
+  background: #f0f8ff;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.featured-article h2 {
+  color: #5a189a;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.featured-article p {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Search Bar */
+.search-bar {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar:focus {
+  border-color: #5a189a;
+  outline: none;
+}
+
+/* Subscribe Section */
+.subscribe-section {
+  background: #fff;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.subscribe-section h3 {
+  color: #5a189a;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.subscribe-section p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.subscribe-input {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.subscribe-btn {
+  padding: 0.8rem 1.5rem;
+  background: #5a189a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.subscribe-btn:hover {
+  background: #3c096c;
+}

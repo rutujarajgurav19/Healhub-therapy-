@@ -1,5 +1,6 @@
 import React from "react";
 import "./PastBookings.css";
+import FindTherapistIntro from "./FindTherapistIntro";
 
 // Import therapist images
 import Priya from "../../assets/therapists/Priya.jpg";
@@ -47,6 +48,7 @@ const PastBookings = ({ pastBookings, onBookAgain }) => {
 
   return (
     <section>
+      {/* Removed FindTherapistIntro as per user request */}
       <h2>Past Booking</h2>
       <p>Check your completed therapy session history.</p>
       {pastBookings.length ? (

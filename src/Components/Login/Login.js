@@ -54,6 +54,11 @@ function Login() {
 
   return (
     <>
+      <div className="login-background">
+        <div className="shape"></div>
+        <div className="shape"></div>
+        <div className="shape"></div>
+      </div>
       <div className="login-card">
         <h2>Welcome Back</h2>
         <p>Sign in to continue your mental health journey</p>

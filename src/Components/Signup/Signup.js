@@ -104,6 +104,11 @@ function Signup() {
 
   return (
     <>
+      <div className="signup-background">
+        <div className="shape"></div>
+        <div className="shape"></div>
+        <div className="shape"></div>
+      </div>
       <div className="signup-card">
         {step === 1 && (
           <>

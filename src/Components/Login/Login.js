@@ -81,9 +81,15 @@ function Login() {
           Sign In
         </button>
 
+        <p className="forgot-password-link">
+          <span className="link" onClick={() => navigate('/forgot-password')}>
+            Forgot Password?
+          </span>
+        </p>
+
         <p>
           Don’t have an account?{" "}
-          <span className="link" onClick={() => (window.location = "/signup")}>
+          <span className="link" onClick={() => navigate('/signup')}>
             Sign up
           </span>
         </p>

@@ -4,32 +4,37 @@ const UserContext = createContext();
 
 export const useUser = () => useContext(UserContext);
 
-const SESSION_DURATION_MS = 60 * 60 * 1000; // 1 hour
-
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
-    localStorage.removeItem('userTimestamp');
+    sessionStorage.removeItem('user');
   };
 
   useEffect(() => {
+    // Load user from sessionStorage on mount
+    const storedUser = sessionStorage.getItem('user');
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        console.error('Error parsing stored user:', error);
+        sessionStorage.removeItem('user');
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('userTimestamp', Date.now().toString());
+      sessionStorage.setItem('user', JSON.stringify(user));
     } else {
-      localStorage.removeItem('user');
-      localStorage.removeItem('userTimestamp');
+      sessionStorage.removeItem('user');
     }
   }, [user]);
 
   const login = (userData) => {
     setUser(userData);
-    // Save to localStorage for persistent login with timestamp
-    localStorage.setItem('user', JSON.stringify(userData));
-    localStorage.setItem('userTimestamp', Date.now().toString());
   };
 
   return (

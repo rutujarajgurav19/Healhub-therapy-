@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import Alert from "../Alert/Alert";
 
 function Signup() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1); // 1=basic info, 2=OTP verify
   const [formData, setFormData] = useState({
     firstName: "",
@@ -16,11 +18,21 @@ function Signup() {
   const [message, setMessage] = useState("");
   const [alertType, setAlertType] = useState("success");
   const [otpSent, setOtpSent] = useState(false);
+  const [countdown, setCountdown] = useState(60);
+  const [resendLoading, setResendLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   };
+
+  // Countdown for OTP resend
+  useEffect(() => {
+    if (step === 2 && countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [step, countdown]);
 
   // Step 1: Send OTP
   const sendOTP = async () => {
@@ -39,6 +51,7 @@ function Signup() {
 
     setStep(2);
     setOtpSent(false);
+
     try {
       const res = await fetch("http://localhost/Healhub/send_otp.php", {
         method: "POST",
@@ -47,14 +60,14 @@ function Signup() {
       });
       const data = await res.json();
       if (data.success) {
-        setOtpSent(true);
+        setTimeout(() => setOtpSent(true), 500); // Show sending message briefly
       } else {
-        setOtpSent(false);
+        setStep(1);
         setAlertType("error");
         setMessage(data.message);
       }
     } catch (error) {
-      setOtpSent(false);
+      setStep(1);
       setAlertType("error");
       setMessage("Error sending OTP: " + error.message);
     }
@@ -82,16 +95,9 @@ function Signup() {
       if (data.success) {
         setAlertType("success");
         setMessage("Account created successfully!");
-        setStep(1);
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-          otp: "",
-          terms: false
-        });
+        setTimeout(() => {
+          navigate('/login');
+        }, 1000);
       } else {
         setAlertType("error");
         setMessage(data.message);
@@ -99,6 +105,32 @@ function Signup() {
     } catch (error) {
       setAlertType("error");
       setMessage("OTP verification failed: " + error.message);
+    }
+  };
+
+  const resendOTP = async () => {
+    setResendLoading(true);
+    try {
+      const res = await fetch("http://localhost/Healhub/send_otp.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setCountdown(60);
+        setResendLoading(false);
+        setAlertType("success");
+        setMessage("OTP resent successfully");
+      } else {
+        setResendLoading(false);
+        setAlertType("error");
+        setMessage(data.message);
+      }
+    } catch (error) {
+      setResendLoading(false);
+      setAlertType("error");
+      setMessage("Error resending OTP: " + error.message);
     }
   };
 
@@ -188,9 +220,48 @@ function Signup() {
             <button className="btn-primary" onClick={verifyOTP}>
               Verify & Complete Signup
             </button>
-            <button className="btn-secondary" onClick={() => setStep(1)}>
+            <button 
+              className="btn-secondary" 
+              onClick={() => setStep(1)}
+              style={{
+                backgroundColor: '#f3e5f5',
+                border: '2px solid #6a5af9',
+                color: '#6a5af9',
+                padding: '14px',
+                borderRadius: '8px',
+                fontWeight: 'bold',
+                width: '100%',
+                margin: '10px 0',
+                minHeight: '50px',
+                boxShadow: '0 2px 8px rgba(106, 90, 249, 0.2)'
+              }}
+            >
               Edit Info
             </button>
+            {countdown > 0 ? (
+              <p className="otp-countdown">Resend OTP in {countdown}s</p>
+            ) : (
+            <button 
+              className="btn-secondary" 
+              onClick={resendOTP} 
+              disabled={resendLoading}
+              style={{
+                backgroundColor: resendLoading ? '#e0e0e0' : '#f3e5f5',
+                border: '2px solid #6a5af9',
+                color: resendLoading ? '#999' : '#6a5af9',
+                padding: '14px',
+                borderRadius: '8px',
+                fontWeight: 'bold',
+                width: '100%',
+                margin: '10px 0',
+                minHeight: '50px',
+                boxShadow: resendLoading ? 'none' : '0 2px 8px rgba(106, 90, 249, 0.2)',
+                cursor: resendLoading ? 'not-allowed' : 'pointer'
+              }}
+            >
+              {resendLoading ? 'Resending...' : 'Resend OTP'}
+            </button>
+            )}
             <p>
               Already have an account? <span className="link" onClick={() => window.location="/login"}>Sign in</span>
             </p>

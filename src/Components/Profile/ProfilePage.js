@@ -7,6 +7,7 @@ import CurrentBookings from "./CurrentBookings";
 import PastBookings from "./PastBookings";
 import TherapistsBooked from "./TherapistsBooked";
 import ForgotPassword from "./ForgotPassword";
+import AssessmentResults from "./AssessmentResults";
 import Alert from "../Alert/Alert";
 
 const ProfilePage = () => {
@@ -65,6 +66,7 @@ const ProfilePage = () => {
     if (path === '/profile/past') setActiveTab('past');
     else if (path === '/profile/therapists') setActiveTab('therapists');
     else if (path === '/forgot-password') setActiveTab('forgot');
+    else if (path === '/profile/assessment') setActiveTab('assessment');
     else setActiveTab('current');
   }, [location.pathname]);
 
@@ -123,6 +125,10 @@ const ProfilePage = () => {
 
       {activeTab === 'forgot' && (
         <ForgotPassword />
+      )}
+
+      {activeTab === 'assessment' && (
+        <AssessmentResults />
       )}
     </div>
   );

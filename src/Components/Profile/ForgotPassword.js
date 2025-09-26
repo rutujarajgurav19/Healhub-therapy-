@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Alert from '../Alert/Alert';
 import './ForgotPassword.css';
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -34,6 +37,7 @@ const ForgotPassword = () => {
         setEmail('');
         setPassword('');
         setConfirmPassword('');
+        setTimeout(() => navigate('/home'), 3000);
       } else {
         setAlertType('error');
         setMessage(data.message || 'Failed to reset password.');
@@ -77,8 +81,8 @@ const ForgotPassword = () => {
           />
           <button type="submit">Reset Password</button>
         </form>
-        {message && <p className={alertType}>{message}</p>}
       </div>
+      <Alert type={alertType} message={message} onClose={() => setMessage("")} />
     </div>
   );
 };

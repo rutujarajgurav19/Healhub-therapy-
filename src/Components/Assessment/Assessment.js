@@ -26,6 +26,7 @@ const options = [
 ];
 
 export default function Assessment() {
+  const { user } = useUser();
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
@@ -83,7 +84,7 @@ await fetch("http://localhost/healhub/api/assessment.php", {
           answers,
           categoryScores,
           recommendedTherapy: bestCategory,
-          userId: "123", // Replace with actual logged-in user ID
+          userId: user.id,
         }),
       });
     } catch (err) {

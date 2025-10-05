@@ -23,7 +23,8 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center 10%;
   margin-bottom: 12px;
   border: 2px solid #6a5acd;
 }
@@ -53,6 +54,21 @@
 
 .book-again-btn:hover {
   background-color: #5a4fc8;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
 }
 
 h3 {

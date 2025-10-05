@@ -28,7 +28,7 @@
 
 .therapist-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
@@ -62,43 +62,43 @@
 }
 .therapist-image.therapist-2 {
   object-fit: fill;
-  height: 270px;
-  border-radius: 8px;
+  height: 250px;
+  border-ra5ius: 8px;
 }
 
 
 .therapist-image.therapist-3 {
   object-fit: fill;
-  height: 250px;
+  height: 230px;
   border-radius: 8px;
 }
 
 .therapist-image.therapist-4 {
   object-fit: contain;
-  height: 260px;
+  height: 234px;
   padding: 10px;
   border-radius: 8px;
 }
 .therapist-image.therapist-5 {
   object-fit: fill;
-  height: 290px;
+  height: 250px;
   border-radius: 8px;
 }
 
 .therapist-image.therapist-6 {
   object-fit: fill;
-  height: 250px;
+  height: 210px;
   border-radius: 8px;
 }
 
 .therapist-image.therapist-7 {
   object-fit: fill;
-  height: 290px;
+  height: 255px;
   border-radius: 8px;
 }
 .therapist-image.therapist-8 {
   object-fit: fill;
-  height: 270px;
+  height: 230px;
   border-radius: 8px;
 }
 
@@ -110,26 +110,26 @@
 
 .therapist-image.therapist-10 {
   object-fit: fill;
-  height: 250px;
+  height: 230px;
   border-radius: 8px;
 }
 
 .therapist-image.therapist-11 {
   object-fit: fill;
-  height: 250px;
+  height: 232px;
   border-radius: 8px;
 }
 
 .therapist-image.therapist-12 {
   object-fit: fill;
-  height: 250px;
+  height: 255px;
   border-radius: 8px;
 }
 
 
 .therapist-image.therapist-13 {
   object-fit: fill;
-  height: 250px;
+  height: 225px;
   border-radius: 8px;
 }
 
@@ -143,14 +143,14 @@
 
 .therapist-image.therapist-15 {
   object-fit: fill;
-  height: 250px;
+  height: 230px;
   border-radius: 8px;
 }
 
 
 .therapist-image.therapist-16 {
   object-fit: fill;
-  height: 250px;
+  height: 230px;
   border-radius: 8px;
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Resources.css";
 import Alert from "../Alert/Alert";
 
@@ -169,6 +169,14 @@ export default function ArticlesPage() {
   const [email, setEmail] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [alert, setAlert] = useState({ type: '', message: '' });
+  useEffect(() => {
+    if (window.location.hash === '#faq') {
+      const faqElement = document.getElementById('faq');
+      if (faqElement) {
+        faqElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
 
   const toggleExpand = (title) => {
     setExpanded((prev) => ({ ...prev, [title]: !prev[title] }));
@@ -246,6 +254,33 @@ export default function ArticlesPage() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <button className="subscribe-btn" onClick={handleSubscribe}>Subscribe</button>
+      </div>
+
+      {/* FAQ Section */}
+      <div id="faq" className="faq-section">
+        <h2>Quick Help for Therapy-Focused HealHub (No Insurance)</h2>
+        <div className="faq-list">
+          <div className="faq-item">
+            <h3>How do I book a therapy session?</h3>
+            <p>Sign in to your HealHub account, choose a therapist or therapy type, pick a suitable time slot, and confirm your booking.</p>
+          </div>
+          <div className="faq-item">
+            <h3>How do I change or cancel a therapy appointment?</h3>
+            <p>Go to the Profile section, open Bookings, select the session you want to modify, and choose Reschedule or Cancel.</p>
+          </div>
+          <div className="faq-item">
+            <h3>Can I view my past and current bookings?</h3>
+            <p>Yes. In the Profile section under Bookings, you can see both your upcoming (current) sessions and past session history.</p>
+          </div>
+          <div className="faq-item">
+            <h3>Is my personal information secure?</h3>
+            <p>Yes. HealHub uses encrypted communication and secure data storage. We comply with privacy regulations for mental-health services to protect your records and conversations.</p>
+          </div>
+          <div className="faq-item">
+            <h3>Can I choose my therapist?</h3>
+            <p>Yes. You can browse therapist profiles, review their expertise, and select the therapist who best fits your needs before booking a session.</p>
+          </div>
+        </div>
       </div>
     </div>
   );

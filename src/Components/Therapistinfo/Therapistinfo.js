@@ -30,7 +30,7 @@ const therapists = [
     availability: "Available today",
     rating: "4.9 (127 reviews)",
     location: "Mumbai, India",
-    price: "$120/session",
+    price: "₹1000/session",
     image: PriyaImg,
   },
   {
@@ -44,7 +44,7 @@ const therapists = [
     availability: "Available this week",
     rating: "4.8 (89 reviews)",
     location: "Los Angeles, CA",
-    price: "$100/session",
+    price: "₹800/session",
     image: MichaelImg,
   },
   {
@@ -58,7 +58,7 @@ const therapists = [
     availability: "Available tomorrow",
     rating: "4.9 (203 reviews)",
     location: "Delhi, India",
-    price: "$110/session",
+    price: "₹900/session",
   image: RajeshImg,
   },
   {
@@ -72,7 +72,7 @@ const therapists = [
     availability: "Available next week",
     rating: "4.7 (156 reviews)",
     location: "Chicago, IL",
-    price: "$150/session",
+    price: "₹1200/session",
     image: emilyImg,
   },
   {
@@ -86,7 +86,7 @@ const therapists = [
     availability: "Available today",
     rating: "4.8 (94 reviews)",
     location: "Denver, CO",
-    price: "$95/session",
+    price: "₹750/session",
     image: AaravImg ,
   },
   {
@@ -100,7 +100,7 @@ const therapists = [
     availability: "Available this week",
     rating: "4.9 (112 reviews)",
     location: "Portland, OR",
-    price: "$115/session",
+    price: "₹950/session",
    image: OliviaImg,
   },
   {
@@ -114,7 +114,7 @@ const therapists = [
     availability: "Available today",
     rating: "4.8 (98 reviews)",
     location: "Bangalore, India",
-    price: "$105/session",
+    price: "₹850/session",
    image: AnjaliImg ,
   },
   {
@@ -128,7 +128,7 @@ const therapists = [
     availability: "Available tomorrow",
     rating: "4.7 (145 reviews)",
     location: "Austin, TX",
-    price: "$125/session",
+    price: "₹1000/session",
     image: DavidImg,
   },
   {
@@ -142,7 +142,7 @@ const therapists = [
     availability: "Available this week",
     rating: "4.9 (167 reviews)",
     location: "Hyderabad, India",
-    price: "$110/session",
+    price: "₹900/session",
    image:KavitaImg,
   },
   {
@@ -156,7 +156,7 @@ const therapists = [
     availability: "Available next week",
     rating: "4.6 (89 reviews)",
     location: "Raleigh, NC",
-    price: "$130/session",
+    price: "₹1050/session",
    image: EthanImg,
   },
   {
@@ -170,7 +170,7 @@ const therapists = [
     availability: "Available today",
     rating: "4.8 (76 reviews)",
     location: "Bangalore, India",
-    price: "$95/session",
+    price: "₹750/session",
     image:MeeraImg,
   },
   {
@@ -184,7 +184,7 @@ const therapists = [
     availability: "Available this week",
     rating: "4.7 (112 reviews)",
     location: "Phoenix, AZ",
-    price: "$120/session",
+    price: "₹1000/session",
    image: KevinImg,
   },
   {
@@ -198,7 +198,7 @@ const therapists = [
     availability: "Available tomorrow",
     rating: "4.9 (134 reviews)",
     location: "Chennai, India",
-    price: "$100/session",
+    price: "₹800/session",
    image: RohanImg,
   },
   {
@@ -212,7 +212,7 @@ const therapists = [
     availability: "Available this week",
     rating: "4.8 (156 reviews)",
     location: "Denver, CO",
-    price: "$115/session",
+    price: "₹950/session",
    image: SophiaImg,
   },
   {
@@ -226,7 +226,7 @@ const therapists = [
     availability: "Available today",
     rating: "4.9 (98 reviews)",
     location: "Pune, India",
-    price: "$105/session",
+    price: "₹850/session",
    image: ArjunImg,
   },
   {
@@ -240,7 +240,7 @@ const therapists = [
     availability: "Available this week",
     rating: "4.8 (134 reviews)",
     location: "Toronto, Canada",
-    price: "$125/session",
+    price: "₹1000/session",
    image: LisaImg,
   },
 ];

@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import Alert from "../Alert/Alert";
+import { useUser } from "../../UserContext";
 
 function Signup() {
   const navigate = useNavigate();
+  const { login } = useUser();
   const [step, setStep] = useState(1); // 1=basic info, 2=OTP verify
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     password: "",
     confirmPassword: "",
     otp: "",
@@ -34,9 +37,28 @@ function Signup() {
     }
   }, [step, countdown]);
 
+  // Google Signin initialization
+  useEffect(() => {
+    const checkGoogle = () => {
+      if (window.google && window.google.accounts) {
+        window.google.accounts.id.initialize({
+          client_id: "215212700559-6squv4ojltte9hs514eje80mc32qfau2.apps.googleusercontent.com",
+          callback: handleGoogleSignup,
+        });
+        window.google.accounts.id.renderButton(
+          document.getElementById("google-signup-button"),
+          { theme: "outline", size: "large", text: "signup_with" }
+        );
+      } else {
+        setTimeout(checkGoogle, 100);
+      }
+    };
+    checkGoogle();
+  }, []);
+
   // Step 1: Send OTP
   const sendOTP = async () => {
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.password) {
       setAlertType("error");
       return setMessage("Fill all required fields");
     }
@@ -88,6 +110,7 @@ function Signup() {
           email: formData.email,
           otp: formData.otp,
           name: `${formData.firstName} ${formData.lastName}`,
+          phone: formData.phone,
           password: formData.password
         })
       });
@@ -134,6 +157,31 @@ function Signup() {
     }
   };
 
+  const handleGoogleSignup = async (response) => {
+    try {
+      const res = await fetch("http://localhost/Healhub/google_login.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          credential: response.credential,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setAlertType("success");
+        setMessage("Account created and signed in successfully!");
+        login(data.user);
+        navigate("/home");
+      } else {
+        setAlertType("error");
+        setMessage(data.message);
+      }
+    } catch (err) {
+      setAlertType("error");
+      setMessage("Google signup failed: " + err.message);
+    }
+  };
+
   return (
     <>
       <div className="signup-background">
@@ -168,6 +216,13 @@ function Signup() {
               onChange={handleChange}
             />
             <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            <input
               type="password"
               name="password"
               placeholder="Password"
@@ -193,6 +248,10 @@ function Signup() {
             <button className="btn-primary" onClick={sendOTP}>
               Create Account & Send OTP
             </button>
+            <div style={{ textAlign: 'center', margin: '20px 0' }}>
+              <span style={{ color: '#666', fontSize: '14px' }}>or</span>
+            </div>
+            <div id="google-signup-button" style={{ display: 'flex', justifyContent: 'center' }}></div>
             <p>
               Already have an account? <span className="link" onClick={() => window.location="/login"}>Sign in</span>
             </p>

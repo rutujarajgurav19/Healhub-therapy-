@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import Alert from "../Alert/Alert"; // import the reusable Alert
 import { useUser } from "../../UserContext";
@@ -10,6 +10,44 @@ function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
   const [alertType, setAlertType] = useState("success");
+
+  useEffect(() => {
+    if (window.google) {
+      window.google.accounts.id.initialize({
+        client_id: "215212700559-6squv4ojltte9hs514eje80mc32qfau2.apps.googleusercontent.com",
+        callback: handleGoogleLogin,
+      });
+      window.google.accounts.id.renderButton(
+        document.getElementById("google-signin-button"),
+        { theme: "outline", size: "large" }
+      );
+    }
+  }, []);
+
+  const handleGoogleLogin = async (response) => {
+    try {
+      const res = await fetch("http://localhost/Healhub/google_login.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          credential: response.credential,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setAlertType("success");
+        setMessage("Login successful!");
+        login(data.user);
+        navigate("/home");
+      } else {
+        setAlertType("error");
+        setMessage(data.message);
+      }
+    } catch (err) {
+      setAlertType("error");
+      setMessage("Google login failed: " + err.message);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -80,6 +118,8 @@ function Login() {
         <button className="btn-primary" onClick={handleLogin}>
           Sign In
         </button>
+
+        <div id="google-signin-button"></div>
 
         <p className="forgot-password-link">
           <span className="link" onClick={() => navigate('/forgot-password')}>

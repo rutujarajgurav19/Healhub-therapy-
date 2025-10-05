@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Contact.css";
 
 export default function Contact() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -9,6 +11,7 @@ export default function Contact() {
     urgency: "",
     message: "",
   });
+  const [expanded, setExpanded] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,6 +43,7 @@ export default function Contact() {
           urgency: "",
           message: "",
         });
+        navigate('/home');
       } else {
         alert("Failed to send message: " + result.message);
       }
@@ -132,32 +136,41 @@ export default function Contact() {
             <p>
               <strong>Support Hours:</strong>
               <br />
-              Mon–Fri: 9AM–8PM EST <br />
-              Sat–Sun: 10AM–6PM EST
+              Mon–Fri: 9AM–8PM IST <br />
+              Sat–Sun: 10AM–6PM IST
             </p>
           </div>
 
           <div className="info-card crisis-card">
             <h3>⚠️ Crisis Resources</h3>
             <p>
-              National Suicide Prevention Lifeline: <strong>988</strong> (24/7)
+              National Suicide Prevention Lifeline: <strong>9152987821</strong> (AASRA) <br />
+              <a href="https://www.aasra.info/" target="_blank" rel="noopener noreferrer">www.aasra.info</a>
             </p>
             <p>
-              Crisis Text Line: Text <strong>HOME</strong> to 741741 (24/7)
+              Crisis Support: Call <strong>9152987821</strong> or visit <a href="https://www.aasra.info/" target="_blank" rel="noopener noreferrer">www.aasra.info</a>
             </p>
             <p>
-              Emergency Services: <strong>911</strong>
+              Emergency Services: <strong>112</strong>
             </p>
           </div>
 
           <div className="info-card">
             <h3>Quick Help</h3>
-            <ul>
-              <li>How do I book a session?</li>
-              <li>What insurance do you accept?</li>
-              <li>How do I change my appointment?</li>
-              <li>Is my information secure?</li>
-            </ul>
+            <div className="quick-help-list">
+              <div className={`quick-help-item ${expanded === 0 ? 'expanded' : ''}`} onClick={() => setExpanded(expanded === 0 ? null : 0)}>
+                <div className="question">How do I book a session?</div>
+                {expanded === 0 && <div className="answer">You can book a session by signing in to your HealHub account, selecting a service or specialist, choosing an available date and time, and confirming your booking.</div>}
+              </div>
+              <div className={`quick-help-item ${expanded === 1 ? 'expanded' : ''}`} onClick={() => setExpanded(expanded === 1 ? null : 1)}>
+                <div className="question">How do I change my appointment?</div>
+                {expanded === 1 && <div className="answer">Go to the Profile section, open Bookings, select the session you want to modify, and choose Reschedule or Cancel.</div>}
+              </div>
+              <div className={`quick-help-item ${expanded === 2 ? 'expanded' : ''}`} onClick={() => setExpanded(expanded === 2 ? null : 2)}>
+                <div className="question">Is my information secure?</div>
+                {expanded === 2 && <div className="answer">Yes. HealHub uses encrypted data transmission and secure storage in compliance with healthcare privacy regulations (like HIPAA/GDPR) to keep your personal and medical information safe.</div>}
+              </div>
+            </div>
           </div>
         </div>
       </div>

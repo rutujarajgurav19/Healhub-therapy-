@@ -62,6 +62,7 @@ export default function Navbar() {
 
         <Link to="/resources">Resources</Link>
         <Link to="/contact">Contact</Link>
+        {user && <Link to="/feedback">Feedback</Link>}
       </nav>
 
       {/* Right Auth Buttons or Profile Menu */}
@@ -81,6 +82,8 @@ export default function Navbar() {
                 <Link to="/profile/current">Current Bookings</Link>
                 <Link to="/profile/past">Past Bookings</Link>
                 <Link to="/profile/therapists">My Therapists</Link>
+                <Link to="/profile/payments">Payment Details</Link>
+                {!user.password && <Link to="/profile/settings">Account Settings</Link>}
                 <Link to="/forgot-password">Forgot Password</Link>
                 <button onClick={handleLogout}>Logout</button>
               </div>

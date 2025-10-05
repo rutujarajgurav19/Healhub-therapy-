@@ -3,8 +3,8 @@
   margin: 120px auto 50px;
   padding: 70px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  background: #fff;
+  box-shadow: 0 4px 20px var(--shadow-light);
+  background: var(--bg-light);
   text-align: center;
   font-family: Arial, sans-serif;
 }
@@ -15,7 +15,7 @@
 
 .login-card p {
   margin-bottom: 15px;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 input[type="email"],
@@ -31,7 +31,7 @@ input[type="password"] {
 .forgot {
   text-align: right;
   font-size: 12px;
-  color: #6a5af9;
+  color: var(--primary-purple);
   cursor: pointer;
   margin-bottom: 10px;
 }
@@ -42,7 +42,7 @@ input[type="password"] {
   border: none;
   border-radius: 8px;
   font-size: 15px;
-  background-color: #6a5af9;
+  background-color: var(--primary-purple);
   color: #fff;
   cursor: pointer;
   margin-bottom: 10px;
@@ -50,7 +50,7 @@ input[type="password"] {
 }
 
 .btn-primary:hover {
-  background-color: #5746c6;
+  background-color: var(--secondary-purple);
 }
 
 .social-login {
@@ -74,7 +74,7 @@ input[type="password"] {
 }
 
 .link {
-  color: #6a5af9;
+  color: var(--primary-purple);
   cursor: pointer;
   text-decoration: underline;
 }
@@ -82,7 +82,7 @@ input[type="password"] {
 small {
   display: block;
   margin-top: 15px;
-  color: #888;
+  color: var(--text-muted);
   font-size: 12px;
 }
 
@@ -101,13 +101,13 @@ small {
   color: #fff;
   text-align: center;
   z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--shadow-medium);
   animation: fadeInOut 3s ease forwards;
 }
 
 /* Success = purple */
 .alert.success {
-  background-color: #6a5af9;
+  background-color: var(--primary-purple);
 }
 
 /* Error = red */
@@ -129,7 +129,7 @@ small {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #f0e6ff 0%, #d4bfff 100%);
+  background: linear-gradient(135deg, var(--light-purple) 0%, var(--light-purple) 100%);
   z-index: -1;
   overflow: hidden;
 }
@@ -137,7 +137,7 @@ small {
 .login-background .shape {
   position: absolute;
   border-radius: 50%;
-  background: rgba(99, 19, 126, 0.1);
+  background: rgba(75, 46, 131, 0.1);
   animation: float 6s ease-in-out infinite;
 }
 

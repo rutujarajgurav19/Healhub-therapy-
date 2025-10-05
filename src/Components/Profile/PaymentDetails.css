@@ -1,0 +1,57 @@
+.payment-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.payment-card {
+  background: var(--bg-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--shadow-light);
+  padding: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.payment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px var(--shadow-medium);
+}
+
+.payment-card h4 {
+  margin: 0 0 8px;
+  color: var(--primary-purple);
+  font-size: 16px;
+}
+
+.payment-card p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.payment-card p span {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.delete-btn {
+  background: var(--error-red);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 8px;
+  transition: background 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: var(--error-red-dark);
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}

@@ -16,6 +16,7 @@ import Therapyinfo from "./Components/Therapistinfo/Therapistinfo";
 import Booking from "./Components/Booking/Booking";
 import ProfilePage from "./Components/Profile/ProfilePage";
 import ForgotPassword from "./Components/Profile/ForgotPassword";
+import Feedback from "./Components/Feedback/Feedback";
 
 function App() {
   return (
@@ -43,8 +44,11 @@ function App() {
           <Route path="/profile/past" element={<ProfilePage />} />
           <Route path="/profile/therapists" element={<ProfilePage />} />
           <Route path="/profile/assessment" element={<ProfilePage />} />
+          <Route path="/profile/payments" element={<ProfilePage />} />
+          <Route path="/profile/settings" element={<ProfilePage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/feedback" element={<Feedback />} />
         </Routes>
       </Router>
     </UserProvider>

@@ -5,6 +5,46 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary, #f7fbfc);
+  color: var(--text-primary, #333);
+}
+
+:root {
+  /* Logo/Theme Colors - Purple Theme */
+  --primary-purple: #4b2e83;
+  --secondary-purple: #6a4fcf;
+  --light-purple: #f9f6ff;
+  --purple-border: #d5c8f7;
+  --purple-shadow: rgba(75, 46, 131, 0.3);
+  
+  /* Backgrounds */
+  --bg-primary: #f7fbfc;
+  --bg-light: #ffffff;
+  --bg-card: #f9f6ff;
+  
+  /* Text */
+  --text-primary: #333;
+  --text-secondary: #666;
+  --text-muted: #555;
+  
+  /* Borders and Shadows */
+  --border-light: #d1c4e9;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(34, 34, 34, 0.10);
+  
+  /* Accents */
+  --star-gold: #ffd700;
+  --star-empty: #ccc;
+  
+  /* Buttons */
+  --btn-primary-bg: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  --btn-primary-hover: linear-gradient(135deg, #3a2366, #5a3bbb);
+  --btn-cancel-bg: linear-gradient(135deg, var(--purple-border), #e8daf9);
+  --btn-cancel-hover: linear-gradient(135deg, #c3b1f5, var(--purple-border));
+
+  /* Error colors */
+  --error-red: #dc3545;
+  --error-red-dark: #c82333;
 }
 
 code {

@@ -38,7 +38,7 @@ const therapistImages = {
   Lisa,
 };
 
-const TherapistsBooked = ({ therapists, onBookAgain }) => {
+const TherapistsBooked = ({ therapists, onBookAgain, onDelete }) => {
   const getTherapistImage = (name) => {
     // Extract the first name from the therapist name (e.g., 'Dr. Priya Sharma' -> 'Priya')
     const firstName = name.split(' ')[1] || name.split(' ')[0];
@@ -65,8 +65,19 @@ const TherapistsBooked = ({ therapists, onBookAgain }) => {
               <button
                 className="book-again-btn"
                 onClick={() => onBookAgain && onBookAgain(t.therapist_id)}
+                style={{ marginRight: '10px' }}
               >
                 Book Again
+              </button>
+              <button
+                className="delete-btn"
+                onClick={() => {
+                  if (window.confirm('Are you sure you want to delete this therapist?')) {
+                    onDelete && onDelete(t.therapist_id);
+                  }
+                }}
+              >
+                Delete Therapist
               </button>
             </div>
           ))}

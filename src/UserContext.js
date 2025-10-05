@@ -6,6 +6,7 @@ export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const logout = () => {
     setUser(null);
@@ -23,6 +24,7 @@ export const UserProvider = ({ children }) => {
         sessionStorage.removeItem('user');
       }
     }
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -38,7 +40,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, login, logout, loading }}>
       {children}
     </UserContext.Provider>
   );

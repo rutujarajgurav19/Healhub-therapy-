@@ -101,20 +101,37 @@
   gap: 20px;
 }
 
-.info-card ul {
+.quick-help-list {
   list-style: none;
   padding-left: 0;
-  color: #555;
 }
 
-.info-card li {
-  padding: 8px 0;
+.quick-help-item {
   cursor: pointer;
-  transition: color 0.2s ease;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
 }
 
-.info-card li:hover {
-  color: #6a0dad;
+.quick-help-item:hover {
+  background: #f0f0f0;
+}
+
+.quick-help-item.expanded {
+  background: #f9f9f9;
+}
+
+.question {
+  font-weight: bold;
+  color: #333;
+}
+
+.answer {
+  margin-top: 10px;
+  padding-left: 20px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 @media (max-width: 768px) {

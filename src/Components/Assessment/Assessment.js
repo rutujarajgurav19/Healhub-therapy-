@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Assessment.css";
 import Alert from "../Alert/Alert";
 import { useUser } from "../../UserContext";
@@ -27,6 +28,7 @@ const options = [
 
 export default function Assessment() {
   const { user } = useUser();
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
@@ -166,11 +168,10 @@ await fetch("http://localhost/healhub/api/assessment.php", {
           <button
             className="btn primary w-full"
             onClick={() => {
-              const isAuthenticated = !!localStorage.getItem("user");
-              if (!isAuthenticated) {
-                window.location.href = "/signup";
+              if (!user) {
+                navigate("/signup");
               } else {
-                window.location.href = "/therapist";
+                navigate("/therapistinfo");
               }
             }}
           >
